@@ -1,11 +1,12 @@
-package com.watchme.roman.watchme_ver2;
+package com.watchme.roman.watchme_ver2.ResideMenu;
 
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import com.watchme.roman.watchme_ver2.ResideMenu;
+
+import com.watchme.roman.watchme_ver2.R;
 
 /**
  * User: special

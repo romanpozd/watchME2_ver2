@@ -1,4 +1,4 @@
-package com.watchme.roman.watchme_ver2;
+package com.watchme.roman.watchme_ver2.ResideMenu;
 
 
 import android.content.Context;

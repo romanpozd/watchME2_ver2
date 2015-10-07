@@ -1,26 +1,25 @@
-package com.watchme.roman.watchme_ver2;
+package com.watchme.roman.watchme_ver2.ResideMenu;
 
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.Rect;
-import android.graphics.drawable.GradientDrawable;
 import android.os.Build;
 import android.util.DisplayMetrics;
 import android.view.*;
 import android.view.animation.AnimationUtils;
-import android.view.animation.Interpolator;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
-import android.widget.ScrollView;
 
 import com.nineoldandroids.animation.Animator;
 import com.nineoldandroids.animation.AnimatorSet;
 import com.nineoldandroids.animation.ObjectAnimator;
 import com.nineoldandroids.view.ViewHelper;
+import com.watchme.roman.watchme_ver2.R;
+import com.watchme.roman.watchme_ver2.ResideMenu.TouchDisableView;
 
 import java.util.ArrayList;
 import java.util.List;

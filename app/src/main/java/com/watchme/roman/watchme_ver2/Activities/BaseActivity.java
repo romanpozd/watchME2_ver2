@@ -5,26 +5,22 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.TabLayout;
-import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.SearchView;
 
-import com.watchme.roman.watchme_ver2.Adapters.TabsPageAdapter;
 import com.watchme.roman.watchme_ver2.R;
-import com.watchme.roman.watchme_ver2.ResideMenu;
-import com.watchme.roman.watchme_ver2.ResideMenuItem;
+import com.watchme.roman.watchme_ver2.ResideMenu.ResideMenu;
+import com.watchme.roman.watchme_ver2.ResideMenu.ResideMenuItem;
 import com.watchme.roman.watchme_ver2.Volley.VolleyController;
 
 /****************************************************
