@@ -36,6 +36,8 @@ public class ResideMenu extends FrameLayout {
     private boolean navAtRight;
     private boolean navAtBottom;
 
+    // NavigationBar size
+    private int navigationSize;
 
     public static final int DIRECTION_LEFT = 0;
     public static final int DIRECTION_RIGHT = 1;
@@ -152,13 +154,13 @@ public class ResideMenu extends FrameLayout {
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             if (navAtBottom){
-                bottomPadding += getNavigationBarHeight();
+                bottomPadding += navigationSize;
             }
             else if (navAtRight)
-                rightPadding += getNavigationBarHeight();
+                rightPadding += navigationSize;
         }
-        if (navAtRight)
-            rightPadding -= 12;
+       // if (navAtRight)
+          //  rightPadding -= 12;
         this.setPadding(viewActivity.getPaddingLeft() + insets.left,
                 topPadding,
                 rightPadding,
@@ -184,8 +186,9 @@ public class ResideMenu extends FrameLayout {
      *
      * @param activity
      */
-    public void attachToActivity(Activity activity,boolean navAtRight, boolean navAtBottom) {
+    public void attachToActivity(Activity activity,boolean navAtRight, boolean navAtBottom, int navigationSize) {
         initValue(activity);
+        this.navigationSize = navigationSize;
         this.navAtRight = navAtRight;
         this.navAtBottom = navAtBottom;
         setShadowAdjustScaleXByOrientation();

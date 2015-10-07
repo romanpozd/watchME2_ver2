@@ -112,9 +112,15 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
         boolean navAtRight = screenHeight == visible.bottom;
         boolean navAtBottom = screenWidth == visible.right;
 
+        int navigationSize;
+        if (navAtRight)
+            navigationSize = screenWidth - visible.right;
+        else
+            navigationSize = screenHeight - visible.bottom;
+
         resideMenu = new ResideMenu(this);
         resideMenu.setBackground(R.drawable.background);
-        resideMenu.attachToActivity(this,navAtRight,navAtBottom);
+        resideMenu.attachToActivity(this,navAtRight,navAtBottom,navigationSize);
         resideMenu.setScaleValue(0.6f);
         resideMenu.setSwipeDirectionDisable(ResideMenu.DIRECTION_RIGHT);
 
@@ -208,6 +214,7 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
             screenHeight = display.getHeight();
         }
     }
+
 }
 
 
