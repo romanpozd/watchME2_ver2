@@ -3,6 +3,8 @@ package com.watchme.roman.watchme_ver2.Activities;
 import android.app.SearchManager;
 import android.content.ComponentName;
 import android.content.Context;
+import android.graphics.Point;
+import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
@@ -11,10 +13,13 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.DisplayMetrics;
+import android.view.Display;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.SearchView;
 
@@ -30,6 +35,9 @@ import com.watchme.roman.watchme_ver2.Volley.VolleyController;
  ****************************************************/
 public class BaseActivity extends AppCompatActivity implements View.OnClickListener {
 
+    // Screen dimensions
+    private int screenWidth;
+    private int screenHeight;
     // Menu
     protected Menu menu;
     protected SearchView searchView;
@@ -95,9 +103,18 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     protected void menuConfiguration() {
+
+        Rect visible = new Rect();
+        getWindow().getDecorView().getWindowVisibleDisplayFrame(visible);
+        getRealScreenDimensions();
+
+        // Check if navigationbar at right or bottom
+        boolean navAtRight = screenHeight == visible.bottom;
+        boolean navAtBottom = screenWidth == visible.right;
+
         resideMenu = new ResideMenu(this);
         resideMenu.setBackground(R.drawable.background);
-        resideMenu.attachToActivity(this);
+        resideMenu.attachToActivity(this,navAtRight,navAtBottom);
         resideMenu.setScaleValue(0.6f);
         resideMenu.setSwipeDirectionDisable(ResideMenu.DIRECTION_RIGHT);
 
@@ -172,6 +189,24 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
         viewPager.setVisibility(View.GONE);
         FrameLayout container = (FrameLayout) findViewById(R.id.frame_container);
         container.setVisibility(View.VISIBLE);
+    }
+
+    private void getRealScreenDimensions(){
+        final int version = android.os.Build.VERSION.SDK_INT;
+        Display display = getWindowManager().getDefaultDisplay();
+
+        if (version >= 13)
+        {
+            Point size = new Point();
+            display.getRealSize(size);
+            screenWidth = size.x;
+            screenHeight = size.y;
+        }
+        else
+        {
+            screenWidth = display.getWidth();
+            screenHeight = display.getHeight();
+        }
     }
 }
 

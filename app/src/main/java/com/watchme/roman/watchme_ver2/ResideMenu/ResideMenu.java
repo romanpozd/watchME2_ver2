@@ -32,6 +32,11 @@ import java.util.List;
  */
 public class ResideMenu extends FrameLayout {
 
+    // Check where is the navigation bar placed
+    private boolean navAtRight;
+    private boolean navAtBottom;
+
+
     public static final int DIRECTION_LEFT = 0;
     public static final int DIRECTION_RIGHT = 1;
     private static final int PRESSED_MOVE_HORIZONTAL = 2;
@@ -139,20 +144,24 @@ public class ResideMenu extends FrameLayout {
         // and returning true. This behavior is off by default and can be enabled through setFitsSystemWindows(boolean)
         // in api14+ devices.
 
+
+
         int bottomPadding = viewActivity.getPaddingBottom() + insets.bottom;
         int rightPadding = viewActivity.getPaddingRight() + insets.right;
         int topPadding = 0;
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            if (getResources().getConfiguration().orientation != Configuration.ORIENTATION_LANDSCAPE){
+            if (navAtBottom){
                 bottomPadding += getNavigationBarHeight();
             }
-            else
+            else if (navAtRight)
                 rightPadding += getNavigationBarHeight();
         }
+        if (navAtRight)
+            rightPadding -= 12;
         this.setPadding(viewActivity.getPaddingLeft() + insets.left,
                 topPadding,
-                rightPadding - 12,
+                rightPadding,
                 bottomPadding);
         insets.left = insets.top = insets.right = insets.bottom = 0;
         return true;
@@ -175,8 +184,10 @@ public class ResideMenu extends FrameLayout {
      *
      * @param activity
      */
-    public void attachToActivity(Activity activity) {
+    public void attachToActivity(Activity activity,boolean navAtRight, boolean navAtBottom) {
         initValue(activity);
+        this.navAtRight = navAtRight;
+        this.navAtBottom = navAtBottom;
         setShadowAdjustScaleXByOrientation();
         viewDecor.addView(this, 0);
     }
