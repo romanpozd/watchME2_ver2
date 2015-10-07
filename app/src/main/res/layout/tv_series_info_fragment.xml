@@ -1,0 +1,306 @@
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="fill_vertical"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+
+    <com.vlonjatg.progressactivity.ProgressActivity
+        android:id="@+id/progressActivity"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <com.watchme.roman.watchme_ver2.Volley.RoundedNetworkImageView
+                        android:id="@+id/niv_series_poster"
+                        android:layout_width="120dp"
+                        android:layout_height="190dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="10dp" />
+
+
+                    <TextView
+                        android:id="@+id/tv_series_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_toRightOf="@+id/niv_series_poster"
+                        android:gravity="left"
+                        android:textColor="@android:color/black"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tv_series_runtime"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tv_series_title"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_toRightOf="@+id/niv_series_poster"
+                        android:gravity="left" />
+
+                    <TextView
+                        android:id="@+id/tv_series_year"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tv_series_runtime"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_toRightOf="@id/niv_series_poster"
+                        android:gravity="left" />
+
+
+                    <TextView
+                        android:id="@+id/tv_series_company"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tv_series_year"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_toRightOf="@+id/niv_series_poster"
+                        android:gravity="left" />
+
+                    <TextView
+                        android:id="@+id/tv_series_genres"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tv_company"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_toRightOf="@id/niv_series_poster" />
+
+                    <View
+                        android:id="@+id/separatorTools"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_below="@id/niv_series_poster"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginTop="5dp"
+                        android:background="@android:color/darker_gray" />
+
+
+                    <ImageButton
+                        android:id="@+id/btn_favorite"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_below="@+id/separatorTools"
+                        android:layout_marginTop="5dp"
+                        android:layout_toLeftOf="@+id/centerPoint"
+                        android:background="#00000000" />
+
+                    <TextView
+                        android:id="@+id/centerPoint"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/separatorTools"
+                        android:layout_centerHorizontal="true"
+                        android:text="" />
+
+                    <RatingBar
+                        android:id="@+id/rating_bar"
+                        style="?android:attr/ratingBarStyleSmall"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/separatorTools"
+                        android:layout_marginTop="8dp"
+                        android:layout_toRightOf="@+id/centerPoint"
+                        android:numStars="5"
+                        android:stepSize="0.1" />
+
+                    <TextView
+                        android:id="@+id/tv_favorite"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/btn_favorite"
+                        android:layout_marginTop="5dp"
+                        android:layout_toLeftOf="@+id/centerTextPoint"
+                        android:textColor="@android:color/black"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:id="@+id/centerTextPoint"
+                        android:layout_width="75dp"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/btn_favorite"
+                        android:layout_centerHorizontal="true"
+                        android:text="" />
+
+                    <ImageView
+                        android:id="@+id/btn_multi_person"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_below="@+id/rating_bar"
+                        android:layout_marginTop="5dp"
+                        android:layout_toRightOf="@id/centerTextPoint"
+                        android:src="@mipmap/multiple" />
+
+                    <TextView
+                        android:id="@+id/tv_vote_count"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/rating_bar"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_toRightOf="@id/btn_multi_person"
+                        android:textColor="@android:color/black"
+                        android:textSize="14sp" />
+
+                    <View
+                        android:id="@+id/separator"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_below="@id/tv_favorite"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginTop="5dp"
+                        android:background="@android:color/darker_gray" />
+
+                    <TextView
+                        android:id="@+id/tv_series_overview_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/separator"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="5dp"
+                        android:text="@string/overview_title"
+                        android:textColor="@android:color/black"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tv_series_overview"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_below="@+id/tv_series_overview_title"
+                        android:layout_marginBottom="5dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginTop="5dp"
+                        android:gravity="left" />
+                </RelativeLayout>
+
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/tv_creator_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="10dp"
+                        android:gravity="left"
+                        android:text="@string/creator_title"
+                        android:textColor="@android:color/black"
+                        android:textStyle="bold" />
+
+                    <com.watchme.roman.watchme_ver2.Volley.RoundedNetworkImageView
+                        android:id="@+id/niv_creator_poster"
+                        android:layout_width="120dp"
+                        android:layout_height="190dp"
+                        android:layout_below="@id/tv_creator_title"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="10dp" />
+
+                    <TextView
+                        android:id="@+id/tv_creator_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_toRightOf="@+id/niv_creator_poster"
+                        android:gravity="left"
+                        android:textColor="@android:color/black"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tv_creator_birthday"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tv_creator_name"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_toRightOf="@+id/niv_creator_poster"
+                        android:gravity="left" />
+
+                    <TextView
+                        android:id="@+id/tv_creator_birthplace"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tv_creator_birthday"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_toRightOf="@id/niv_creator_poster"
+                        android:gravity="left" />
+
+                    <View
+                        android:id="@+id/creator_bio_separate"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_below="@id/niv_creator_poster"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginTop="5dp"
+                        android:background="@android:color/darker_gray" />
+
+                    <TextView
+                        android:id="@+id/tv_creator_bio_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/creator_bio_separate"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="5dp"
+                        android:text="@string/biography"
+                        android:textColor="@android:color/black"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tv_creator_bio"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_below="@+id/tv_creator_bio_title"
+                        android:layout_marginBottom="5dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginTop="5dp"
+                        android:gravity="left" />
+                </RelativeLayout>
+            </android.support.v7.widget.CardView>
+        </LinearLayout>
+    </com.vlonjatg.progressactivity.ProgressActivity>
+
+</android.support.v4.widget.NestedScrollView>
+

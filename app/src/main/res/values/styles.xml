@@ -1,0 +1,16 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- color for the app bar -->
+        <item name="colorPrimary">#2687a1</item>
+        <!-- darker color variant -->
+        <item name="colorPrimaryDark">#303F9F</item>
+        <item name="android:statusBarColor" tools:targetApi="lollipop">#303F9F</item>
+        <!-- theme UI controls like checkboxes and text fields -->
+        <item name="colorAccent">#FF4081</item>
+
+    </style>
+
+
+</resources>

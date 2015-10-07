@@ -1,0 +1,33 @@
+<resources>
+    <string name="app_name">watchME</string>
+
+    <string name="API">b27473a09faafa044b5c5ee930662908</string>
+
+    // Preferences
+    <string name="default_path">popularity.desc</string>
+    <string name="sort_method_posters_pref">sort_method</string>
+    <string name="sort_method_title">Movies sort method</string>
+    <string name="Upcoming_movies">Upcoming</string>
+    <string name="newest_movies">Newest</string>
+    <string name="popular_movies">Popular</string>
+    <string name="most_rated_moves">Most rated</string>
+    <string name="title_activity_details">DetailsActivity</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="youtube_api_key">AIzaSyAjUzNvb6M2ym4m80_fIoBmJBfyoShDTug</string>
+    <string name="overview_title">Overview</string>
+    <string name="trailer_title">Trailer</string>
+    <string name="title_activity_actor_details">ActorDetailsActivity</string>
+    <string name="actor_biography">Biography</string>
+    <string name="tv_series_tab">TV Series</string>
+    <string name="biography">Biography</string>
+    <string name="creator_title">Creator</string>
+    <string name="movies_tab">Movies</string>
+    <string name="search_option">Search</string>
+    <string name="actor_tag">Actor</string>
+    <string name="movie_tag">Movie</string>
+    <string name="tv_tag">TV Series</string>
+    <string name="search">Search</string>
+
+
+</resources>
