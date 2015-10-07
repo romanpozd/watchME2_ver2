@@ -9,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
 import com.watchme.roman.watchme_ver2.Activities.DetailsActivity;
 import com.watchme.roman.watchme_ver2.Adapters.ActorFilmographyRecyclerAdapter;
 import com.watchme.roman.watchme_ver2.Model.Movie;
@@ -16,7 +17,9 @@ import com.watchme.roman.watchme_ver2.R;
 import com.watchme.roman.watchme_ver2.Utils.Constants;
 import com.watchme.roman.watchme_ver2.Utils.ParseJSON;
 import com.watchme.roman.watchme_ver2.Utils.Utility;
+
 import org.json.JSONException;
+
 import java.io.UnsupportedEncodingException;
 import java.util.List;
 
@@ -36,7 +39,7 @@ public class FilmographyFragment extends Fragment {
     String actor_id;
 
     @Override
-    public void onCreate(Bundle savedInstanceState){
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         Intent intent = getActivity().getIntent();
@@ -44,10 +47,10 @@ public class FilmographyFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.recyclerlist_fragment, container, false);
 
-        recyclerView = (RecyclerView)view.findViewById(R.id.recycler_view);
+        recyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
 
@@ -60,6 +63,7 @@ public class FilmographyFragment extends Fragment {
         }
         return view;
     }
+
     private void UpdateList() throws UnsupportedEncodingException, JSONException {
 
         Uri uri = Utility.buildUriForPersonFilmography(getActivity(), actor_id);

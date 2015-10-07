@@ -9,7 +9,10 @@ public class Episode {
     private double rating;
 
     // Constructor
-    public Episode(){};
+    public Episode() {
+    }
+
+
 
     // Getters
 

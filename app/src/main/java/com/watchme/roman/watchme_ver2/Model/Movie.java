@@ -9,9 +9,9 @@ import java.util.ArrayList;
  * Created by roman on 03/09/2015.
  * This class stores all movie information that I get after JSON parsing
  **************************************************************************/
-public class Movie  {
+public class Movie {
     private String title, overview, posterURL, backdrop, character, companyName, creatorID, status;
-    private int year, runtime,voteCount;
+    private int year, runtime, voteCount;
     private double rating;
     private String id;
     private ArrayList<String> genres;
@@ -81,7 +81,6 @@ public class Movie  {
     }
 
 
-
     // Setters
 
 
@@ -140,7 +139,6 @@ public class Movie  {
     public void setMovieId(String id) {
         this.id = id;
     }
-
 
 
 }

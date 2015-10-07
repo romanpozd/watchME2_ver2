@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.NetworkImageView;
 import com.watchme.roman.watchme_ver2.Model.Movie;
@@ -32,19 +33,20 @@ public class GridRecyclerAdapter extends RecyclerView.Adapter<GridRecyclerAdapte
     private List<Movie> moviesList;
 
     // Constructor
-    public GridRecyclerAdapter(List<Movie> movies){
+    public GridRecyclerAdapter(List<Movie> movies) {
         this.moviesList = movies;
 
     }
-    public class CustomViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+
+    public class CustomViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         protected NetworkImageView movieImg;
-        protected TextView movieTitle,movieYear;
+        protected TextView movieTitle, movieYear;
 
         public CustomViewHolder(View v) {
             super(v);
-            this.movieImg = (NetworkImageView)v.findViewById(R.id.niv_grid_poster);
-            this.movieTitle = (TextView)v.findViewById(R.id.tv_grid_movie_title);
-            this.movieYear = (TextView)v.findViewById(R.id.tv_grid_movie_year);
+            this.movieImg = (NetworkImageView) v.findViewById(R.id.niv_grid_poster);
+            this.movieTitle = (TextView) v.findViewById(R.id.tv_grid_movie_title);
+            this.movieYear = (TextView) v.findViewById(R.id.tv_grid_movie_year);
             v.setOnClickListener(this);
         }
 
@@ -54,12 +56,15 @@ public class GridRecyclerAdapter extends RecyclerView.Adapter<GridRecyclerAdapte
                 mItemClickListener.onItemClick(v, getPosition());
         }
     }
-    public interface OnItemClickListener{
+
+    public interface OnItemClickListener {
         void onItemClick(View view, int position);
     }
-    public void SetOnItemClickListener(final OnItemClickListener mItemClickListener){
+
+    public void SetOnItemClickListener(final OnItemClickListener mItemClickListener) {
         this.mItemClickListener = mItemClickListener;
     }
+
     @Override
     public GridRecyclerAdapter.CustomViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.single_grid_poster, parent, false);

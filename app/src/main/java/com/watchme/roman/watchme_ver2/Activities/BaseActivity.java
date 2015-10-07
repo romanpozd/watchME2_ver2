@@ -28,7 +28,7 @@ import com.watchme.roman.watchme_ver2.Volley.VolleyController;
  * Base Activity holds all ResideMenu objects.
  * All classes inherited from this base class
  ****************************************************/
-public class BaseActivity extends AppCompatActivity implements View.OnClickListener{
+public class BaseActivity extends AppCompatActivity implements View.OnClickListener {
 
     // Menu
     protected Menu menu;
@@ -53,7 +53,7 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.collapsing_activity);
-        toolbar = (Toolbar)findViewById(R.id.my_toolbar);
+        toolbar = (Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
@@ -61,10 +61,10 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
         getSupportActionBar().setHomeAsUpIndicator(navigator);
 
         // Set new tabLayout and create needed tabs
-        tabLayout = (TabLayout)findViewById(R.id.collapsing_tabLayout);
+        tabLayout = (TabLayout) findViewById(R.id.collapsing_tabLayout);
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
         // Initialize the viewpager
-        viewPager = (ViewPager)findViewById(R.id.collapsing_pager);
+        viewPager = (ViewPager) findViewById(R.id.collapsing_pager);
 
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
@@ -94,7 +94,7 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
-    protected void menuConfiguration(){
+    protected void menuConfiguration() {
         resideMenu = new ResideMenu(this);
         resideMenu.setBackground(R.drawable.background);
         resideMenu.attachToActivity(this);
@@ -103,10 +103,10 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
 
 
         // Menu items
-        itemMovies = new ResideMenuItem(this,R.drawable.movies, "Movies");
-        itemTVSeries = new ResideMenuItem(this,R.drawable.series, "TV Series");
-        itemFavorites = new ResideMenuItem(this,R.drawable.favorites, "Favorites");
-        itemSearch = new ResideMenuItem(this,R.drawable.search, "Search");
+        itemMovies = new ResideMenuItem(this, R.drawable.movies, "Movies");
+        itemTVSeries = new ResideMenuItem(this, R.drawable.series, "TV Series");
+        itemFavorites = new ResideMenuItem(this, R.drawable.favorites, "Favorites");
+        itemSearch = new ResideMenuItem(this, R.drawable.search, "Search");
 
         // OnClick
         itemMovies.setOnClickListener(this);
@@ -125,7 +125,6 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
 
     }
-
 
 
     @Override
@@ -162,16 +161,16 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
             resideMenu.closeMenu();
     }
 
-    protected void disableCollapsingToolbar(){
-        AppBarLayout appBarLayout = (AppBarLayout)findViewById(R.id.movie_details_appBar);
+    protected void disableCollapsingToolbar() {
+        AppBarLayout appBarLayout = (AppBarLayout) findViewById(R.id.movie_details_appBar);
         appBarLayout.setExpanded(false);
-        CollapsingToolbarLayout collapsingToolbarLayout = (CollapsingToolbarLayout)findViewById(R.id.collapsing_toolbar);
+        CollapsingToolbarLayout collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
         collapsingToolbarLayout.setTitleEnabled(false);
     }
 
-    protected void showFrameContainer(){
+    protected void showFrameContainer() {
         viewPager.setVisibility(View.GONE);
-        FrameLayout container = (FrameLayout)findViewById(R.id.frame_container);
+        FrameLayout container = (FrameLayout) findViewById(R.id.frame_container);
         container.setVisibility(View.VISIBLE);
     }
 }

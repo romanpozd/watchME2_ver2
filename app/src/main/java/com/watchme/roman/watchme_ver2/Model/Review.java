@@ -5,7 +5,7 @@ package com.watchme.roman.watchme_ver2.Model;
  */
 public class Review {
 
-    private String author,review;
+    private String author, review;
 
     // Getters
     public String getAuthor() {

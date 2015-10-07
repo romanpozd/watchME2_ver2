@@ -12,10 +12,11 @@ import com.watchme.roman.watchme_ver2.Fragments.ReviewsFragment;
 /**
  * Created by roman on 04/09/2015.
  */
-public class DetailsPageAdapter extends FragmentStatePagerAdapter{
+public class DetailsPageAdapter extends FragmentStatePagerAdapter {
 
     int numOfTabs;
-    public DetailsPageAdapter(FragmentManager fm,int numOfTabs) {
+
+    public DetailsPageAdapter(FragmentManager fm, int numOfTabs) {
         super(fm);
         this.numOfTabs = numOfTabs;
     }
@@ -23,7 +24,7 @@ public class DetailsPageAdapter extends FragmentStatePagerAdapter{
     @Override
     public Fragment getItem(int position) {
 
-        switch (position){
+        switch (position) {
             case 0:
                 MovieInfoFragment tab0 = new MovieInfoFragment();
                 return tab0;

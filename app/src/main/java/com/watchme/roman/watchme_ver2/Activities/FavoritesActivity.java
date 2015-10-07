@@ -3,6 +3,7 @@ package com.watchme.roman.watchme_ver2.Activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+
 import com.watchme.roman.watchme_ver2.Adapters.FavoriteTabAdapter;
 import com.watchme.roman.watchme_ver2.R;
 
@@ -25,7 +26,7 @@ public class FavoritesActivity extends BaseActivity {
         tabLayout.addTab(tabLayout.newTab().setText(R.string.movies_tab));
         tabLayout.addTab(tabLayout.newTab().setText(R.string.tv_series_tab));
 
-        final FavoriteTabAdapter adapter = new FavoriteTabAdapter(getSupportFragmentManager(),tabLayout.getTabCount());
+        final FavoriteTabAdapter adapter = new FavoriteTabAdapter(getSupportFragmentManager(), tabLayout.getTabCount());
         viewPager.setAdapter(adapter);
 
     }

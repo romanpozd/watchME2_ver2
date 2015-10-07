@@ -13,6 +13,7 @@ import android.support.v7.widget.RecyclerView.OnScrollListener;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
 import com.vlonjatg.progressactivity.ProgressActivity;
 import com.watchme.roman.watchme_ver2.Activities.DetailsActivity;
 import com.watchme.roman.watchme_ver2.Activities.MainActivity;
@@ -23,7 +24,9 @@ import com.watchme.roman.watchme_ver2.Utils.Constants;
 import com.watchme.roman.watchme_ver2.Utils.ParseJSON;
 import com.watchme.roman.watchme_ver2.Utils.Utility;
 import com.watchme.roman.watchme_ver2.Volley.VolleyController;
+
 import org.json.JSONException;
+
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
@@ -147,7 +150,7 @@ public class NewestFragment extends Fragment {
         @Override
         public void onClick(View v) {
             VolleyController.getmInstance().getmRequestQueue().getCache().clear();
-            Intent intent = new Intent(getActivity(),MainActivity.class);
+            Intent intent = new Intent(getActivity(), MainActivity.class);
             startActivity(intent);
         }
     };

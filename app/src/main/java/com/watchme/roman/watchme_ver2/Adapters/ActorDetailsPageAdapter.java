@@ -16,7 +16,8 @@ import com.watchme.roman.watchme_ver2.Fragments.ReviewsFragment;
 public class ActorDetailsPageAdapter extends FragmentStatePagerAdapter {
 
     int numOfTabs;
-    public ActorDetailsPageAdapter(FragmentManager fm,int numOfTabs) {
+
+    public ActorDetailsPageAdapter(FragmentManager fm, int numOfTabs) {
         super(fm);
         this.numOfTabs = numOfTabs;
     }
@@ -24,7 +25,7 @@ public class ActorDetailsPageAdapter extends FragmentStatePagerAdapter {
     @Override
     public Fragment getItem(int position) {
 
-        switch (position){
+        switch (position) {
             case 0:
                 ActorDetailsFragment tab0 = new ActorDetailsFragment();
                 return tab0;
@@ -35,6 +36,7 @@ public class ActorDetailsPageAdapter extends FragmentStatePagerAdapter {
                 return null;
         }
     }
+
     @Override
     public int getCount() {
         return numOfTabs;

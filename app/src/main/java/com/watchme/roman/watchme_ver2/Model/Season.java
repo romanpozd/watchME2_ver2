@@ -7,7 +7,8 @@ public class Season {
     int season_number, year, numof_episodes;
     String season_poster, season_id, title, TVSerie_thumb;
 
-    public Season(){}
+    public Season() {
+    }
 
     // Getters
 

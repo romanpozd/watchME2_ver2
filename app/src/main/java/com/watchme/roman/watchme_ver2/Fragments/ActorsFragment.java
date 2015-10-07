@@ -9,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
 import com.watchme.roman.watchme_ver2.Activities.ActorDetailsActivity;
 import com.watchme.roman.watchme_ver2.Adapters.ActorsRecyclerAdapter;
 import com.watchme.roman.watchme_ver2.Model.Actors;
@@ -39,22 +40,22 @@ public class ActorsFragment extends Fragment {
     private List<Actors> actorsList = new ArrayList<>();
 
     @Override
-    public void onCreate(Bundle savedInstanceState){
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         Intent intent = getActivity().getIntent();
 
-        if (intent != null){
+        if (intent != null) {
             movie_id = intent.getStringExtra(Constants.ID_TAG);
             is_tv = intent.getBooleanExtra(Constants.IS_TVSERIES_TAG, false);
         }
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.recyclerlist_fragment, container, false);
 
-        recyclerView = (RecyclerView)view.findViewById(R.id.recycler_view);
+        recyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
 
@@ -67,6 +68,7 @@ public class ActorsFragment extends Fragment {
         }
         return view;
     }
+
     private void UpdateList() throws UnsupportedEncodingException, JSONException {
         String path;
         if (is_tv)

@@ -3,6 +3,7 @@ package com.watchme.roman.watchme_ver2.Adapters;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
+
 import com.watchme.roman.watchme_ver2.Fragments.FavoriteMoviesFragment;
 import com.watchme.roman.watchme_ver2.Fragments.FavoriteTVSeriesFragment;
 

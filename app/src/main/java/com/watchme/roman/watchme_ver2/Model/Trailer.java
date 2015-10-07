@@ -8,13 +8,24 @@ public class Trailer {
     private String key;
     private String id;
 
-    public Trailer(){}
+    public Trailer() {
+    }
 
     // Getters
-    public String getKey(){return key;}
-    public String getId(){return id;}
+    public String getKey() {
+        return key;
+    }
+
+    public String getId() {
+        return id;
+    }
 
     // Setters
-    public void setKey(String key){this.key = key;}
-    public void setId(String id){this.id = id;}
+    public void setKey(String key) {
+        this.key = key;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 }

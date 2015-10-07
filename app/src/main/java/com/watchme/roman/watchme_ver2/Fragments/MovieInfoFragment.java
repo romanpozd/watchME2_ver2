@@ -31,7 +31,7 @@ import com.watchme.roman.watchme_ver2.R;
 import com.watchme.roman.watchme_ver2.Utils.Constants;
 import com.watchme.roman.watchme_ver2.Utils.ParseJSON;
 import com.watchme.roman.watchme_ver2.Utils.Utility;
-import com.watchme.roman.watchme_ver2.Volley.RoundedNetworkImageView;
+import com.watchme.roman.watchme_ver2.Utils.RoundedNetworkImageView;
 import com.watchme.roman.watchme_ver2.Volley.VolleyController;
 import com.watchme.roman.watchme_ver2.Volley.WatchMeApplication;
 
@@ -97,7 +97,7 @@ public class MovieInfoFragment extends Fragment {
 
         animation = AnimationUtils.loadAnimation(getContext(), R.anim.shake);
 
-        tv_status = (TextView)view.findViewById(R.id.tv_status);
+        tv_status = (TextView) view.findViewById(R.id.tv_status);
         tv_voteCount = (TextView) view.findViewById(R.id.tv_vote_count);
         ratingBar = (RatingBar) view.findViewById(R.id.rating_bar);
         tv_favorite = (TextView) view.findViewById(R.id.tv_favorite);

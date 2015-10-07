@@ -9,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
 import com.android.volley.toolbox.NetworkImageView;
 import com.watchme.roman.watchme_ver2.Adapters.EpisodeRecyclerAdapter;
 import com.watchme.roman.watchme_ver2.Model.Episode;
@@ -16,7 +17,9 @@ import com.watchme.roman.watchme_ver2.R;
 import com.watchme.roman.watchme_ver2.Utils.Constants;
 import com.watchme.roman.watchme_ver2.Utils.ParseJSON;
 import com.watchme.roman.watchme_ver2.Utils.Utility;
+
 import org.json.JSONException;
+
 import java.io.UnsupportedEncodingException;
 import java.util.List;
 
@@ -49,10 +52,10 @@ public class EpisodeFragment extends Fragment {
         }
     }
 
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.recyclerlist_fragment, container, false);
 
-        recyclerView = (RecyclerView)view.findViewById(R.id.recycler_view);
+        recyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         try {
@@ -66,7 +69,7 @@ public class EpisodeFragment extends Fragment {
     }
 
     private void UpdateList() throws UnsupportedEncodingException, JSONException {
-        Uri uri = Utility.buildUriForSeasonEpisodes(getActivity(),tv_id,season_num);
+        Uri uri = Utility.buildUriForSeasonEpisodes(getActivity(), tv_id, season_num);
         ParseJSON parseJSON = new ParseJSON();
         parseJSON.ParseSeasonEpisodes(uri, new ParseJSON.VolleyCallBackEpisodes() {
             @Override

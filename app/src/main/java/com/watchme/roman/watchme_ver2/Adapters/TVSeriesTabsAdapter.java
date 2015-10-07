@@ -18,6 +18,7 @@ public class TVSeriesTabsAdapter extends FragmentStatePagerAdapter {
         super(fm);
         this.numOfTabs = numOfTabs;
     }
+
     @Override
     public Fragment getItem(int position) {
         switch (position) {

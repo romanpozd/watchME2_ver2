@@ -9,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
 import com.watchme.roman.moviesgreendao.model.DaoSession;
 import com.watchme.roman.moviesgreendao.model.Movie;
 import com.watchme.roman.moviesgreendao.model.MovieDao;
@@ -17,6 +18,7 @@ import com.watchme.roman.watchme_ver2.Adapters.FavoritesRecyclerAdapter;
 import com.watchme.roman.watchme_ver2.R;
 import com.watchme.roman.watchme_ver2.Utils.Constants;
 import com.watchme.roman.watchme_ver2.Volley.WatchMeApplication;
+
 import java.util.ArrayList;
 import java.util.List;
 

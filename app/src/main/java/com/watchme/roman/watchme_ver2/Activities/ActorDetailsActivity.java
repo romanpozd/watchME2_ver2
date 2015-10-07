@@ -11,6 +11,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.TranslateAnimation;
+
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.NetworkImageView;
 import com.watchme.roman.watchme_ver2.Adapters.ActorDetailsPageAdapter;
@@ -21,8 +22,9 @@ import com.watchme.roman.watchme_ver2.Volley.VolleyController;
 /*******************************************************************/
 /* Actors details class that gets actor image from intent and sets */
 /* the thumb of collapsing toolbar                                 */
+
 /*******************************************************************/
-public class ActorDetailsActivity extends BaseActivity{
+public class ActorDetailsActivity extends BaseActivity {
 
     // Animation
     private Animation posterAnim;
@@ -49,21 +51,20 @@ public class ActorDetailsActivity extends BaseActivity{
         // Set title as actor name
         getSupportActionBar().setTitle(actorName);
 
-        actorIMG = (NetworkImageView)findViewById(R.id.iv_collapsing_thumb);
+        actorIMG = (NetworkImageView) findViewById(R.id.iv_collapsing_thumb);
         actorIMG.setImageUrl(Constants.BASE_IMG_URL + Constants.BIG_POSTER + actorImgURL, imageLoader);
         actorIMG.getLayoutParams().height = 900;
 
 
-
         // Customize AppBarLayout to show correctly actors image
-        AppBarLayout appBarLayout = (AppBarLayout)findViewById(R.id.movie_details_appBar);
+        AppBarLayout appBarLayout = (AppBarLayout) findViewById(R.id.movie_details_appBar);
         appBarLayout.getLayoutParams().height = 600;
 
-        CollapsingToolbarLayout collapsingToolbarLayout = (CollapsingToolbarLayout)findViewById(R.id.collapsing_toolbar);
+        CollapsingToolbarLayout collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
         collapsingToolbarLayout.getLayoutParams().height = 600;
 
         // Actor collapsing image animation
-        posterAnim = new TranslateAnimation(0,0,-300,-100);
+        posterAnim = new TranslateAnimation(0, 0, -300, -100);
         posterAnim.setDuration(10000);
         posterAnim.setFillAfter(true);
         actorIMG.setAnimation(posterAnim);
@@ -73,27 +74,28 @@ public class ActorDetailsActivity extends BaseActivity{
         tabLayout.addTab(tabLayout.newTab().setText("Filmography"));
 
         // Set the viewpager and the pages adapter
-        final ActorDetailsPageAdapter adapter = new ActorDetailsPageAdapter(getSupportFragmentManager(),tabLayout.getTabCount());
+        final ActorDetailsPageAdapter adapter = new ActorDetailsPageAdapter(getSupportFragmentManager(), tabLayout.getTabCount());
         viewPager.setAdapter(adapter);
 
     }
 
     /**********************************/
     /* OnClick of Residemenu          */
+
     /**********************************/
     @Override
     public void onClick(View v) {
 
-        if (v == itemMovies){
-            Intent intent = new Intent(this,MainActivity.class);
+        if (v == itemMovies) {
+            Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
-        }else if (v == itemTVSeries){
+        } else if (v == itemTVSeries) {
             Intent intent = new Intent(this, TvSeriesActivity.class);
             startActivity(intent);
-        }else if (v == itemFavorites){
+        } else if (v == itemFavorites) {
             Intent intent = new Intent(this, FavoritesActivity.class);
             startActivity(intent);
-        }else if (v == itemSearch) {
+        } else if (v == itemSearch) {
             resideMenu.closeMenu();
             searchView.setIconified(false);
         }

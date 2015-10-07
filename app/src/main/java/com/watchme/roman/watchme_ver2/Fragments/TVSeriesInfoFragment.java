@@ -6,31 +6,26 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.android.volley.toolbox.ImageLoader;
-import com.android.volley.toolbox.NetworkImageView;
 import com.vlonjatg.progressactivity.ProgressActivity;
 import com.watchme.roman.moviesgreendao.model.DaoSession;
 import com.watchme.roman.moviesgreendao.model.Movie;
 import com.watchme.roman.moviesgreendao.model.MovieDao;
-import com.watchme.roman.watchme_ver2.Adapters.ActorsRecyclerAdapter;
 import com.watchme.roman.watchme_ver2.Model.Actors;
-import com.watchme.roman.watchme_ver2.Model.Season;
 import com.watchme.roman.watchme_ver2.R;
 import com.watchme.roman.watchme_ver2.Utils.Constants;
 import com.watchme.roman.watchme_ver2.Utils.ParseJSON;
 import com.watchme.roman.watchme_ver2.Utils.Utility;
-import com.watchme.roman.watchme_ver2.Volley.RoundedNetworkImageView;
+import com.watchme.roman.watchme_ver2.Utils.RoundedNetworkImageView;
 import com.watchme.roman.watchme_ver2.Volley.VolleyController;
 import com.watchme.roman.watchme_ver2.Volley.WatchMeApplication;
 
@@ -94,8 +89,8 @@ public class TVSeriesInfoFragment extends Fragment {
         animation = AnimationUtils.loadAnimation(getContext(), R.anim.shake);
 
         // TV series details
-        tv_voteCount = (TextView)view.findViewById(R.id.tv_vote_count);
-        ratingBar = (RatingBar)view.findViewById(R.id.rating_bar);
+        tv_voteCount = (TextView) view.findViewById(R.id.tv_vote_count);
+        ratingBar = (RatingBar) view.findViewById(R.id.rating_bar);
         tv_favorite = (TextView) view.findViewById(R.id.tv_favorite);
         favorite = (ImageButton) view.findViewById(R.id.btn_favorite);
         movie_poster = (RoundedNetworkImageView) view.findViewById(R.id.niv_series_poster);

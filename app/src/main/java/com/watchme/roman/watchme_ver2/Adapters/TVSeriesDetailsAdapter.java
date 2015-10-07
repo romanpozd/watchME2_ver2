@@ -16,7 +16,8 @@ import com.watchme.roman.watchme_ver2.Fragments.TVSeriesInfoFragment;
 public class TVSeriesDetailsAdapter extends FragmentStatePagerAdapter {
 
     int numOfTabs;
-    public TVSeriesDetailsAdapter(FragmentManager fm,int numOfTabs) {
+
+    public TVSeriesDetailsAdapter(FragmentManager fm, int numOfTabs) {
         super(fm);
         this.numOfTabs = numOfTabs;
     }
@@ -24,7 +25,7 @@ public class TVSeriesDetailsAdapter extends FragmentStatePagerAdapter {
     @Override
     public Fragment getItem(int position) {
 
-        switch (position){
+        switch (position) {
             case 0:
                 TVSeriesInfoFragment tab0 = new TVSeriesInfoFragment();
                 return tab0;

@@ -14,7 +14,10 @@ public class SearchList {
 
 
     // Constructor
-    public SearchList (){};
+    public SearchList() {
+    }
+
+
 
     // Getters
 

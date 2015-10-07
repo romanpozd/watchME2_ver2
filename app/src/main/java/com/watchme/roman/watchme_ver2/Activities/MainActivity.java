@@ -4,12 +4,12 @@ package com.watchme.roman.watchme_ver2.Activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+
 import com.watchme.roman.watchme_ver2.Adapters.TabsPageAdapter;
 import com.watchme.roman.watchme_ver2.R;
 
 
-
-public class MainActivity extends BaseActivity{
+public class MainActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,7 +22,7 @@ public class MainActivity extends BaseActivity{
         tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.newest_movies)));
         tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.popular_movies)));
         tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.most_rated_moves)));
-        final TabsPageAdapter adapter = new TabsPageAdapter(getSupportFragmentManager(),tabLayout.getTabCount());
+        final TabsPageAdapter adapter = new TabsPageAdapter(getSupportFragmentManager(), tabLayout.getTabCount());
         viewPager.setAdapter(adapter);
 
     }
@@ -30,21 +30,19 @@ public class MainActivity extends BaseActivity{
 
     @Override
     public void onClick(View v) {
-        if (v == itemTVSeries){
+        if (v == itemTVSeries) {
             Intent intent = new Intent(this, TvSeriesActivity.class);
             startActivity(intent);
-        }else if (v == itemMovies)
+        } else if (v == itemMovies)
             resideMenu.closeMenu();
-        else if (v == itemFavorites){
+        else if (v == itemFavorites) {
             Intent intent = new Intent(this, FavoritesActivity.class);
             startActivity(intent);
-        }else if (v == itemSearch){
+        } else if (v == itemSearch) {
             resideMenu.closeMenu();
             searchView.setIconified(false);
         }
     }
-
-
 
 
 }

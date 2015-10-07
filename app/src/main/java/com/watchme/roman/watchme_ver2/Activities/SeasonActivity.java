@@ -3,6 +3,7 @@ package com.watchme.roman.watchme_ver2.Activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.NetworkImageView;
 import com.watchme.roman.watchme_ver2.Fragments.EpisodeFragment;
@@ -13,7 +14,7 @@ import com.watchme.roman.watchme_ver2.Volley.VolleyController;
 /**
  * Created by roman on 17/09/2015.
  */
-public class SeasonActivity extends BaseActivity{
+public class SeasonActivity extends BaseActivity {
 
     ImageLoader imageLoader = VolleyController.getmInstance().getmImageLoader();
 
@@ -38,7 +39,7 @@ public class SeasonActivity extends BaseActivity{
             serieThumb = intent.getStringExtra(Constants.BACKDROP_TAG);
         }
 
-        thumb = (NetworkImageView)findViewById(R.id.iv_collapsing_thumb);
+        thumb = (NetworkImageView) findViewById(R.id.iv_collapsing_thumb);
         thumb.setImageUrl(Constants.BASE_IMG_URL + Constants.BIG_POSTER + serieThumb, imageLoader);
 
         // Set toolbar title
@@ -53,16 +54,16 @@ public class SeasonActivity extends BaseActivity{
 
     @Override
     public void onClick(View v) {
-        if (v == itemTVSeries){
+        if (v == itemTVSeries) {
             Intent intent = new Intent(this, TvSeriesActivity.class);
             startActivity(intent);
-        }else if (v == itemMovies){
+        } else if (v == itemMovies) {
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
-        }else if (v == itemFavorites){
+        } else if (v == itemFavorites) {
             Intent intent = new Intent(this, FavoritesActivity.class);
             startActivity(intent);
-        }else if (v == itemSearch){
+        } else if (v == itemSearch) {
             resideMenu.closeMenu();
             searchView.setIconified(false);
         }

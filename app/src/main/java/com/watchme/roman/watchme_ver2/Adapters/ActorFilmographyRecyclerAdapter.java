@@ -56,7 +56,7 @@ public class ActorFilmographyRecyclerAdapter extends RecyclerView.Adapter<ActorF
         return movieList.size();
     }
 
-    public class CustomViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    public class CustomViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         protected NetworkImageView movieThumb;
         protected TextView movieTitle;
         protected TextView actorCharacter;
@@ -70,19 +70,22 @@ public class ActorFilmographyRecyclerAdapter extends RecyclerView.Adapter<ActorF
             this.movieTitle = (TextView) itemView.findViewById(R.id.tv_filmography_title);
             this.actorCharacter = (TextView) itemView.findViewById(R.id.tv_filmography_character);
             this.movieRelease = (TextView) itemView.findViewById(R.id.tv_filmography_release);
-            this.tag = (TextView)itemView.findViewById(R.id.tv_tag);
+            this.tag = (TextView) itemView.findViewById(R.id.tv_tag);
             itemView.setOnClickListener(this);
         }
+
         @Override
         public void onClick(View v) {
             if (mItemClickListener != null)
                 mItemClickListener.onItemClick(v, getPosition());
         }
     }
-    public interface OnItemClickListener{
+
+    public interface OnItemClickListener {
         public void onItemClick(View view, int position);
     }
-    public void SetOnItemClickListener(final OnItemClickListener mItemClickListener){
+
+    public void SetOnItemClickListener(final OnItemClickListener mItemClickListener) {
         this.mItemClickListener = mItemClickListener;
     }
 

@@ -4,6 +4,7 @@ package com.watchme.roman.watchme_ver2.Activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.NetworkImageView;
 import com.watchme.roman.watchme_ver2.Adapters.DetailsPageAdapter;
@@ -26,7 +27,7 @@ public class DetailsActivity extends BaseActivity {
     private NetworkImageView movieBackdrop;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState){
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         menuConfiguration();
@@ -36,11 +37,11 @@ public class DetailsActivity extends BaseActivity {
         if (intent != null) {
             backdropUrl = intent.getStringExtra(Constants.BACKDROP_TAG);
             title = intent.getStringExtra(Constants.TITLE_TAG);
-            is_tv = intent.getBooleanExtra(Constants.IS_TVSERIES_TAG,false);
+            is_tv = intent.getBooleanExtra(Constants.IS_TVSERIES_TAG, false);
         }
 
         // Set movie backdrop
-        movieBackdrop = (NetworkImageView)findViewById(R.id.iv_collapsing_thumb);
+        movieBackdrop = (NetworkImageView) findViewById(R.id.iv_collapsing_thumb);
         movieBackdrop.setImageUrl(backdropUrl, imageLoader);
 
 
@@ -53,7 +54,7 @@ public class DetailsActivity extends BaseActivity {
             tabLayout.addTab(tabLayout.newTab().setText("Movie"));
             tabLayout.addTab(tabLayout.newTab().setText("Reviews"));
             tabLayout.addTab(tabLayout.newTab().setText("Actors"));
-        }else{
+        } else {
             // If there is a TV series
             tabLayout.addTab(tabLayout.newTab().setText("TV Series"));
             tabLayout.addTab(tabLayout.newTab().setText("Actors"));
@@ -65,8 +66,7 @@ public class DetailsActivity extends BaseActivity {
         if (!is_tv) {
             adapter = new DetailsPageAdapter(getSupportFragmentManager(), tabLayout.getTabCount());
             viewPager.setAdapter(adapter);
-        }
-        else {
+        } else {
             tv_adapter = new TVSeriesDetailsAdapter(getSupportFragmentManager(), tabLayout.getTabCount());
             viewPager.setAdapter(tv_adapter);
         }
@@ -75,17 +75,17 @@ public class DetailsActivity extends BaseActivity {
 
     @Override
     public void onClick(View v) {
-        if (v == itemMovies){
+        if (v == itemMovies) {
             resideMenu.closeMenu();
-            Intent intent = new Intent(this,MainActivity.class);
+            Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
-        }else if (v == itemTVSeries){
+        } else if (v == itemTVSeries) {
             Intent intent = new Intent(this, TvSeriesActivity.class);
             startActivity(intent);
-        }else if (v == itemFavorites){
+        } else if (v == itemFavorites) {
             Intent intent = new Intent(this, FavoritesActivity.class);
             startActivity(intent);
-        }else if (v == itemSearch){
+        } else if (v == itemSearch) {
             resideMenu.closeMenu();
             searchView.setIconified(false);
         }

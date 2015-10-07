@@ -9,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
 import com.watchme.roman.watchme_ver2.Activities.ActorDetailsActivity;
 import com.watchme.roman.watchme_ver2.Activities.DetailsActivity;
 import com.watchme.roman.watchme_ver2.Adapters.SearchListRecycleAdapter;
@@ -17,7 +18,9 @@ import com.watchme.roman.watchme_ver2.R;
 import com.watchme.roman.watchme_ver2.Utils.Constants;
 import com.watchme.roman.watchme_ver2.Utils.ParseJSON;
 import com.watchme.roman.watchme_ver2.Utils.Utility;
+
 import org.json.JSONException;
+
 import java.io.UnsupportedEncodingException;
 import java.util.List;
 
@@ -43,7 +46,7 @@ public class SearchListFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.recyclerlist_fragment, container, false);
 
-        recyclerView = (RecyclerView)view.findViewById(R.id.recycler_view);
+        recyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setNestedScrollingEnabled(false);
 
@@ -69,13 +72,13 @@ public class SearchListFragment extends Fragment {
                 searchListRecycleAdapter.SetOnItemClickListener(new SearchListRecycleAdapter.OnItemClickListener() {
                     @Override
                     public void onItemClick(View view, int position) {
-                        if (searchList.get(position).is_actor()){
-                            Intent intent = new Intent(getActivity(),ActorDetailsActivity.class);
+                        if (searchList.get(position).is_actor()) {
+                            Intent intent = new Intent(getActivity(), ActorDetailsActivity.class);
                             intent.putExtra(Constants.ACTOR_ID_TAG, searchList.get(position).getID());
                             intent.putExtra(Constants.ACTOR_IMG_TAG, searchList.get(position).getImage());
                             intent.putExtra(Constants.ACTOR_NAME_TAG, searchList.get(position).getName());
                             startActivity(intent);
-                        }else{
+                        } else {
                             Intent intent = new Intent(getActivity(), DetailsActivity.class);
                             intent.putExtra(Constants.BACKDROP_TAG, searchList.get(position).getBackdrop());
                             intent.putExtra(Constants.ID_TAG, searchList.get(position).getID());

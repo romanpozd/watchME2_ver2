@@ -183,7 +183,8 @@ public class ParseJSON extends Volley {
             VolleyController.getmInstance().addToRequestQueue(jsonObjectRequest);
         }
     }
-    private void setSearchQueryData(JSONObject jsonObject, VolleyCallBackSearch volleyCallBackSearch){
+
+    private void setSearchQueryData(JSONObject jsonObject, VolleyCallBackSearch volleyCallBackSearch) {
         try {
             JSONArray jsonArray = jsonObject.getJSONArray(RESULTS_ARRAY);
             JSONObject tempObj;
@@ -268,7 +269,7 @@ public class ParseJSON extends Volley {
                     new Response.Listener<JSONObject>() {
                         @Override
                         public void onResponse(JSONObject jsonObject) {
-                           setSeasonEpisodesData(jsonObject,callBackEpisodes);
+                            setSeasonEpisodesData(jsonObject, callBackEpisodes);
                         }
                     }, new Response.ErrorListener() {
                 @Override
@@ -280,7 +281,8 @@ public class ParseJSON extends Volley {
             VolleyController.getmInstance().addToRequestQueue(jsonObjectRequest);
         }
     }
-    private void setSeasonEpisodesData(JSONObject jsonObject, VolleyCallBackEpisodes volleyCallBackEpisodes){
+
+    private void setSeasonEpisodesData(JSONObject jsonObject, VolleyCallBackEpisodes volleyCallBackEpisodes) {
         try {
             JSONArray jsonArray = jsonObject.getJSONArray(EPISODES_ARRAY);
             JSONObject tempObj;
@@ -321,7 +323,7 @@ public class ParseJSON extends Volley {
 
                         @Override
                         public void onResponse(JSONObject jsonObject) {
-                            setTVSeriesSeasonsData(jsonObject,callBackTVSeriesSeasons);
+                            setTVSeriesSeasonsData(jsonObject, callBackTVSeriesSeasons);
                         }
                     }, new Response.ErrorListener() {
                 @Override
@@ -333,7 +335,8 @@ public class ParseJSON extends Volley {
             VolleyController.getmInstance().addToRequestQueue(jsonObjectRequest);
         }
     }
-    private void setTVSeriesSeasonsData(JSONObject jsonObject, VolleyCallBackTVSeriesSeasons volleyCallBackTVSeriesSeasons){
+
+    private void setTVSeriesSeasonsData(JSONObject jsonObject, VolleyCallBackTVSeriesSeasons volleyCallBackTVSeriesSeasons) {
         // Get Seasons
         JSONObject tempObj;
         try {
@@ -388,7 +391,7 @@ public class ParseJSON extends Volley {
                         @Override
                         public void onResponse(JSONObject jsonObject) {
                             try {
-                                setTVSeriesCompleteDetails(jsonObject,callBackMovie);
+                                setTVSeriesCompleteDetails(jsonObject, callBackMovie);
                             } catch (UnsupportedEncodingException e) {
                                 e.printStackTrace();
                             }
@@ -405,6 +408,7 @@ public class ParseJSON extends Volley {
             VolleyController.getmInstance().addToRequestQueue(jsonObjectRequest);
         }
     }
+
     private void setTVSeriesCompleteDetails(JSONObject jsonObject, VolleyCallBackSingleMovie volleyCallBackSingleMovie) throws UnsupportedEncodingException {
         Movie tvSeries = new Movie();
 
@@ -487,7 +491,7 @@ public class ParseJSON extends Volley {
                     new Response.Listener<JSONObject>() {
                         @Override
                         public void onResponse(JSONObject jsonObject) {
-                            setActorFilmographyData(jsonObject,actorFilmography);
+                            setActorFilmographyData(jsonObject, actorFilmography);
                         }
                     }, new Response.ErrorListener() {
                 @Override
@@ -500,7 +504,7 @@ public class ParseJSON extends Volley {
         }
     }
 
-    private void setActorFilmographyData(JSONObject jsonObject, VolleyCallBackMovieList volleyCallBackMovieList){
+    private void setActorFilmographyData(JSONObject jsonObject, VolleyCallBackMovieList volleyCallBackMovieList) {
         try {
             JSONArray jsonArray = jsonObject.getJSONArray(CAST_PATH);
             for (int i = 0; i < jsonArray.length(); ++i) {
@@ -522,6 +526,7 @@ public class ParseJSON extends Volley {
         }
         volleyCallBackMovieList.onSuccess(movieList);
     }
+
     // Method that parses specific actor details
     public void ParseActorDetails(Uri actorUri, final VolleyCallBackActorDetails actorDetails) throws UnsupportedEncodingException, JSONException {
         String url = actorUri.toString();
@@ -542,7 +547,7 @@ public class ParseJSON extends Volley {
                     new Response.Listener<JSONObject>() {
                         @Override
                         public void onResponse(JSONObject jsonObject) {
-                           setActorDetailsData(jsonObject, actorDetails);
+                            setActorDetailsData(jsonObject, actorDetails);
                         }
                     }, new Response.ErrorListener() {
                 @Override
@@ -555,7 +560,7 @@ public class ParseJSON extends Volley {
         }
     }
 
-    private void setActorDetailsData(JSONObject jsonObject, VolleyCallBackActorDetails volleyCallBackActorDetails){
+    private void setActorDetailsData(JSONObject jsonObject, VolleyCallBackActorDetails volleyCallBackActorDetails) {
         Actors actor = new Actors();
         try {
             actor.setBiography(jsonObject.getString(BIOGRAPHY_PATH));
@@ -604,7 +609,8 @@ public class ParseJSON extends Volley {
             VolleyController.getmInstance().addToRequestQueue(jsonObjectRequest);
         }
     }
-    private void setMovieReviewsData(JSONObject jsonObject, VolleyCallBackReviews callBackReviews){
+
+    private void setMovieReviewsData(JSONObject jsonObject, VolleyCallBackReviews callBackReviews) {
         try {
             JSONArray jsonArray = jsonObject.getJSONArray(RESULTS_ARRAY);
             // If there is no reviews return custom string
@@ -651,7 +657,7 @@ public class ParseJSON extends Volley {
                     new Response.Listener<JSONObject>() {
                         @Override
                         public void onResponse(JSONObject jsonObject) {
-                            setMovieActorsData(jsonObject,callBackActors);
+                            setMovieActorsData(jsonObject, callBackActors);
                         }
                     }, new Response.ErrorListener() {
                 @Override
