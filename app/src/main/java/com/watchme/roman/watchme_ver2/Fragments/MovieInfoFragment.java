@@ -102,6 +102,11 @@ public class MovieInfoFragment extends Fragment {
         ratingBar = (RatingBar) view.findViewById(R.id.rating_bar);
         tv_favorite = (TextView) view.findViewById(R.id.tv_favorite);
         youTubeThumbnailView = (YouTubeThumbnailView) view.findViewById(R.id.youtube_thumbnail);
+
+        // Check if user device is tablet, if yes set the height of youtube thumb to bigger one
+        if (getResources().getBoolean(R.bool.isTablet))
+            youTubeThumbnailView.getLayoutParams().height = 1000;
+
         play = (Button) view.findViewById(R.id.btn_play);
         play.getBackground().setAlpha(200);
         favorite = (ImageButton) view.findViewById(R.id.btn_favorite);

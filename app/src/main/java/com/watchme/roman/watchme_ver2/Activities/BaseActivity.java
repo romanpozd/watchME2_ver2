@@ -13,6 +13,9 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.Spannable;
+import android.text.SpannableStringBuilder;
+import android.text.style.ImageSpan;
 import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.Menu;
@@ -139,7 +142,7 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
         itemMovies = new ResideMenuItem(this, R.drawable.movies, "Movies");
         itemTVSeries = new ResideMenuItem(this, R.drawable.series, "TV Series");
         itemFavorites = new ResideMenuItem(this, R.drawable.favorites, "Favorites");
-        itemSearch = new ResideMenuItem(this, R.drawable.search, "Search");
+        itemSearch = new ResideMenuItem(this, R.drawable.search_button, "Search");
 
         // OnClick
         itemMovies.setOnClickListener(this);
@@ -179,9 +182,11 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
         SearchManager searchManager =
                 (SearchManager) getSystemService(Context.SEARCH_SERVICE);
         searchView =
-                (SearchView) menu.findItem(R.id.search).getActionView();
+                (SearchView) menu.findItem(R.id.search_button).getActionView();
         searchView.setSearchableInfo(
                 searchManager.getSearchableInfo(new ComponentName(getApplicationContext(), SearchActivity.class)));
+
+
         return true;
     }
 

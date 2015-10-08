@@ -6,6 +6,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -52,7 +53,7 @@ public class TVSeriesInfoFragment extends Fragment {
     // TV Series details views
     private RoundedNetworkImageView movie_poster;
     private TextView movie_title, movie_year, movie_company_name, movie_runtime, movie_overview, movie_genres, tv_favorite, tv_voteCount;
-    private ImageButton favorite, share;
+    private ImageButton favorite;
     private RatingBar ratingBar;
 
     // Creator details views
@@ -165,7 +166,13 @@ public class TVSeriesInfoFragment extends Fragment {
                 movie_company_name.setText("Production: " + tvSeriesObj.getCompanyName());
                 movie_runtime.setText("Episode runtime: " + String.valueOf(tvSeriesObj.getRuntime()));
                 movie_overview.setText(tvSeriesObj.getOverview());
+                if (tvSeriesObj.getGenres().size() == 1)
+                    movie_genres.setText("Genres: " + tvSeriesObj.getGenres().get(0));
 
+                else if (tvSeriesObj.getGenres().size() > 1) {
+                    String joinedGenres = TextUtils.join(", ", tvSeriesObj.getGenres());
+                    movie_genres.setText("Genres: " + joinedGenres);
+                }
 
                 Uri creatorUri = Utility.buildUriForPerson(getActivity(), tvSeriesObj.getCreatorID());
                 parseJSON.ParseActorDetails(creatorUri, new ParseJSON.VolleyCallBackActorDetails() {

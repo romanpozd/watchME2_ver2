@@ -13,7 +13,8 @@
             android:id="@+id/niv_episode_thumb"
             android:layout_width="match_parent"
             android:layout_height="250dp"
-            android:scaleType="fitStart" />
+            android:scaleType="fitXY"
+             />
 
         <TextView
             android:id="@+id/tv_episode_name"
@@ -23,7 +24,7 @@
             android:textColor="@android:color/black"
             android:textStyle="bold"
             android:textSize="18sp"
-            android:layout_alignBottom="@+id/niv_episode_thumb"/>
+            android:layout_below="@id/niv_episode_thumb"/>
 
         <TextView
             android:id="@+id/tv_episode_number"
