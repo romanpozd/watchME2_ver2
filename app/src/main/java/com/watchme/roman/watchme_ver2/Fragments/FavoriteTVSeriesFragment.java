@@ -1,6 +1,7 @@
 package com.watchme.roman.watchme_ver2.Fragments;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -55,8 +56,14 @@ public class FavoriteTVSeriesFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setNestedScrollingEnabled(false);
 
-        // Set the recycler to show two images in single row
-        gridLayoutManager = new GridLayoutManager(getActivity(), 3);
+        // Set the recycler to show 3 images in portrait mode, 4 in landscape and 5 in tablet landscape
+        if (getActivity().getResources().getConfiguration().orientation != Configuration.ORIENTATION_LANDSCAPE)
+            gridLayoutManager = new GridLayoutManager(getActivity(), 3);
+        else if (getResources().getBoolean(R.bool.isTablet))
+            gridLayoutManager = new GridLayoutManager(getActivity(), 5);
+        else
+            gridLayoutManager = new GridLayoutManager(getActivity(), 4);
+
         recyclerView.setLayoutManager(gridLayoutManager);
         return view;
     }

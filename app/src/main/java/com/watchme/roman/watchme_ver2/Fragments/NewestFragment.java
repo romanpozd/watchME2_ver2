@@ -85,9 +85,11 @@ public class NewestFragment extends Fragment {
 
             }
         });
-        // Set the recycler to show two images in single row
+        // Set the recycler to show 3 images in portrait mode, 4 in landscape and 5 in tablet landscape
         if (getActivity().getResources().getConfiguration().orientation != Configuration.ORIENTATION_LANDSCAPE)
             gridLayoutManager = new GridLayoutManager(getActivity(), 3);
+        else if (getResources().getBoolean(R.bool.isTablet))
+            gridLayoutManager = new GridLayoutManager(getActivity(), 5);
         else
             gridLayoutManager = new GridLayoutManager(getActivity(), 4);
         recyclerView.setLayoutManager(gridLayoutManager);

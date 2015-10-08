@@ -159,8 +159,7 @@ public class ResideMenu extends FrameLayout {
             else if (navAtRight)
                 rightPadding += navigationSize;
         }
-       // if (navAtRight)
-          //  rightPadding -= 12;
+
         this.setPadding(viewActivity.getPaddingLeft() + insets.left,
                 topPadding,
                 rightPadding,
@@ -169,17 +168,6 @@ public class ResideMenu extends FrameLayout {
         return true;
     }
 
-    private int getNavigationBarHeight() {
-        Resources resources = getContext().getResources();
-
-        int id = resources.getIdentifier(
-                resources.getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT ? "navigation_bar_height" : "navigation_bar_height_landscape",
-                "dimen", "android");
-        if (id > 0) {
-            return resources.getDimensionPixelSize(id);
-        }
-        return 0;
-    }
 
     /**
      * Set up the activity;

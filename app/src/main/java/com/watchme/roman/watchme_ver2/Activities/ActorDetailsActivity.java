@@ -53,19 +53,22 @@ public class ActorDetailsActivity extends BaseActivity {
 
         actorIMG = (NetworkImageView) findViewById(R.id.iv_collapsing_thumb);
         actorIMG.setImageUrl(Constants.BASE_IMG_URL + Constants.BIG_POSTER + actorImgURL, imageLoader);
-        actorIMG.getLayoutParams().height = 900;
+         actorIMG.getLayoutParams().height = 1300;
 
 
         // Customize AppBarLayout to show correctly actors image
-        AppBarLayout appBarLayout = (AppBarLayout) findViewById(R.id.movie_details_appBar);
-        appBarLayout.getLayoutParams().height = 600;
+        if (getResources().getBoolean(R.bool.isTablet)) {
+            collapsingToolbarLayout.getLayoutParams().height = 900;
+            posterAnim = new TranslateAnimation(0, 0, -400, -100);
+        }
+        else {
+            collapsingToolbarLayout.getLayoutParams().height = 600;
+            posterAnim = new TranslateAnimation(0, 0, -600, -350);
 
-        CollapsingToolbarLayout collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
-        collapsingToolbarLayout.getLayoutParams().height = 600;
+        }
 
-        // Actor collapsing image animation
-        posterAnim = new TranslateAnimation(0, 0, -300, -100);
-        posterAnim.setDuration(10000);
+        //  Actor collapsing image animation
+        posterAnim.setDuration(5000);
         posterAnim.setFillAfter(true);
         actorIMG.setAnimation(posterAnim);
 

@@ -138,9 +138,7 @@ public class MovieInfoFragment extends Fragment {
         });
         try {
             UpdateMovies();
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        } catch (JSONException e) {
+        } catch (UnsupportedEncodingException | JSONException e) {
             e.printStackTrace();
         }
         return view;
@@ -191,6 +189,7 @@ public class MovieInfoFragment extends Fragment {
                     joinedGenres = TextUtils.join(", ", myMovie.getGenres());
                     movie_genres.setText("Genres: " + joinedGenres);
                 }
+                progressActivity.showContent();
             }
         });
 
@@ -205,7 +204,7 @@ public class MovieInfoFragment extends Fragment {
                     public void onInitializationSuccess(YouTubeThumbnailView youTubeThumbnailView, YouTubeThumbnailLoader youTubeThumbnailLoader) {
                         thumbnailLoader = youTubeThumbnailLoader;
                         thumbnailLoader.setVideo(trailerObj.getKey());
-                        progressActivity.showContent();
+
                     }
 
                     @Override

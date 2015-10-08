@@ -48,6 +48,8 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
     protected ResideMenuItem itemFavorites;
     protected ResideMenuItem itemSearch;
 
+    // Collapsingtoolbar
+    protected CollapsingToolbarLayout collapsingToolbarLayout;
     // Toolbar
     Toolbar toolbar;
 
@@ -68,6 +70,13 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
         final Drawable navigator = getResources().getDrawable(R.mipmap.ic_action_list);
         getSupportActionBar().setHomeAsUpIndicator(navigator);
 
+        collapsingToolbarLayout = (CollapsingToolbarLayout)findViewById(R.id.collapsing_toolbar);
+
+
+        if (getResources().getBoolean(R.bool.isTablet)){
+            // Set the collapsingtoolbar to be bigger than in smartphone
+            collapsingToolbarLayout.getLayoutParams().height = 600;
+        }
         // Set new tabLayout and create needed tabs
         tabLayout = (TabLayout) findViewById(R.id.collapsing_tabLayout);
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
@@ -106,6 +115,7 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
 
         Rect visible = new Rect();
         getWindow().getDecorView().getWindowVisibleDisplayFrame(visible);
+        // Method that gets device real size
         getRealScreenDimensions();
 
         // Check if navigationbar at right or bottom
@@ -201,7 +211,7 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
         final int version = android.os.Build.VERSION.SDK_INT;
         Display display = getWindowManager().getDefaultDisplay();
 
-        if (version >= 13)
+        if (version >= 15)
         {
             Point size = new Point();
             display.getRealSize(size);
