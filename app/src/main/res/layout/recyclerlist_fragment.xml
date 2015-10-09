@@ -1,19 +1,28 @@
-<com.vlonjatg.progressactivity.ProgressActivity
+<com.vlonjatg.progressactivity.ProgressActivity xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
+    xmlns:progressActivity="http://schemas.android.com/apk/res-auto"
     android:id="@+id/progressActivity"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    xmlns:android="http://schemas.android.com/apk/res/android"
     progressActivity:progressErrorStateBackgroundColor="#2687a1"
     progressActivity:progressErrorStateContentTextColor="#FFFFFF"
-    progressActivity:progressErrorStateTitleTextColor="#FFFFFF"
-    xmlns:progressActivity="http://schemas.android.com/apk/res-auto">
+    progressActivity:progressErrorStateTitleTextColor="#FFFFFF">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scrollbars="vertical" />
+
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/adView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        ads:adSize="BANNER"
+        ads:adUnitId="ca-app-pub-3940256099942544/6300978111" />
 
 </com.vlonjatg.progressactivity.ProgressActivity>
 

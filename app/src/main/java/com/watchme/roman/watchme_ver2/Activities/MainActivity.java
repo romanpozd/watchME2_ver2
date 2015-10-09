@@ -5,6 +5,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.analytics.HitBuilders;
 import com.watchme.roman.watchme_ver2.Adapters.TabsPageAdapter;
 import com.watchme.roman.watchme_ver2.R;
 
@@ -14,6 +17,8 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
 
         menuConfiguration();
         disableCollapsingToolbar();

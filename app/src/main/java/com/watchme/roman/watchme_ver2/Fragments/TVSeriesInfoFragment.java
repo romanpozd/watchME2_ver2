@@ -17,12 +17,15 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.android.volley.toolbox.ImageLoader;
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
 import com.vlonjatg.progressactivity.ProgressActivity;
 import com.watchme.roman.moviesgreendao.model.DaoSession;
 import com.watchme.roman.moviesgreendao.model.Movie;
 import com.watchme.roman.moviesgreendao.model.MovieDao;
 import com.watchme.roman.watchme_ver2.Model.Actors;
 import com.watchme.roman.watchme_ver2.R;
+import com.watchme.roman.watchme_ver2.Utils.AnalyticsApplication;
 import com.watchme.roman.watchme_ver2.Utils.Constants;
 import com.watchme.roman.watchme_ver2.Utils.ParseJSON;
 import com.watchme.roman.watchme_ver2.Utils.Utility;
@@ -117,12 +120,27 @@ public class TVSeriesInfoFragment extends Fragment {
         favorite.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Tracker tracker = ((AnalyticsApplication)getActivity().getApplication()).getmTracker();
+
                 if (!isFavorited()) {
+                    // Send GoogleAnalytics event tracker of Favorite button
+                    tracker.send(new HitBuilders.EventBuilder()
+                            .setCategory("Favorite")
+                            .setAction("Favorited tv series")
+                            .setLabel(tvSeriesObj.getTitle())
+                            .build());
+
                     favorite.setBackgroundResource(R.mipmap.btn_favorited);
                     favorite.setAnimation(animation);
                     tv_favorite.setText("Favorited");
                     insertDataToFavorite();
                 } else {
+                    tracker.send(new HitBuilders.EventBuilder()
+                            .setCategory("Favorite")
+                            .setAction("Unfavorited tv series")
+                            .setLabel(tvSeriesObj.getTitle())
+                            .build());
+
                     getActivity().setResult(Activity.RESULT_OK);
                     favorite.setBackgroundResource(R.mipmap.btn_favorite);
                     favorite.setAnimation(animation);

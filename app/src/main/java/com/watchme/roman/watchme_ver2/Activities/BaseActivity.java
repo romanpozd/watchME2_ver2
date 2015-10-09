@@ -13,22 +13,19 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.text.Spannable;
-import android.text.SpannableStringBuilder;
-import android.text.style.ImageSpan;
-import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.SearchView;
-
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
 import com.watchme.roman.watchme_ver2.R;
 import com.watchme.roman.watchme_ver2.ResideMenu.ResideMenu;
 import com.watchme.roman.watchme_ver2.ResideMenu.ResideMenuItem;
+import com.watchme.roman.watchme_ver2.Utils.AnalyticsApplication;
 import com.watchme.roman.watchme_ver2.Volley.VolleyController;
 
 /****************************************************
@@ -62,10 +59,26 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
     // Viewpager
     ViewPager viewPager;
 
+    // GoogleAnalytics tracker
+    protected Tracker tracker;
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.collapsing_activity);
+
+
+        ((AnalyticsApplication) getApplication()).startTracker();
+        // Start GoogleAnalytics tracking
+        tracker = ((AnalyticsApplication)getApplication()).getmTracker();
+        // Set screen name
+        tracker.setScreenName(getLocalClassName());
+
+        // set activity tracker
+        tracker.send(new HitBuilders.ScreenViewBuilder().build());
+
         toolbar = (Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -99,6 +112,12 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
                     resideMenu.addIgnoredView(ignored_view);
                 } else if (tab.getPosition() == 0)
                     resideMenu.clearIgnoredViewList();
+
+                tracker.send(new HitBuilders.EventBuilder()
+                                .setCategory("Tabs")
+                                .setAction("Selected tab")
+                                .setLabel(String.valueOf(tab.getText()))
+                                .build());
             }
 
             @Override
@@ -230,6 +249,11 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+    }
 }
 
 

@@ -18,6 +18,8 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.android.volley.toolbox.ImageLoader;
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
 import com.google.android.youtube.player.YouTubeInitializationResult;
 import com.google.android.youtube.player.YouTubeStandalonePlayer;
 import com.google.android.youtube.player.YouTubeThumbnailLoader;
@@ -28,6 +30,7 @@ import com.watchme.roman.moviesgreendao.model.MovieDao;
 import com.watchme.roman.watchme_ver2.Model.Movie;
 import com.watchme.roman.watchme_ver2.Model.Trailer;
 import com.watchme.roman.watchme_ver2.R;
+import com.watchme.roman.watchme_ver2.Utils.AnalyticsApplication;
 import com.watchme.roman.watchme_ver2.Utils.Constants;
 import com.watchme.roman.watchme_ver2.Utils.ParseJSON;
 import com.watchme.roman.watchme_ver2.Utils.Utility;
@@ -127,12 +130,26 @@ public class MovieInfoFragment extends Fragment {
         favorite.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Tracker tracker = ((AnalyticsApplication)getActivity().getApplication()).getmTracker();
+
                 if (!isFavorited()) {
+                    // Send GoogleAnalytics event tracker of Favorite button
+                    tracker.send(new HitBuilders.EventBuilder()
+                                    .setCategory("Favorite")
+                                    .setAction("Favorited movie")
+                                    .setLabel(myMovie.getTitle())
+                                    .build());
                     favorite.setBackgroundResource(R.mipmap.btn_favorited);
                     favorite.setAnimation(animation);
                     tv_favorite.setText("Favorited");
                     insertMovieDataToFavorite();
                 } else {
+                    tracker.send(new HitBuilders.EventBuilder()
+                            .setCategory("Favorite")
+                            .setAction("Unfavorited")
+                            .setLabel(myMovie.getTitle())
+                            .build());
+
                     getActivity().setResult(Activity.RESULT_OK);
                     favorite.setBackgroundResource(R.mipmap.btn_favorite);
                     favorite.setAnimation(animation);
