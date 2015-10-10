@@ -12,6 +12,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 import com.vlonjatg.progressactivity.ProgressActivity;
 import com.watchme.roman.watchme_ver2.Activities.DetailsActivity;
 import com.watchme.roman.watchme_ver2.Activities.TvSeriesActivity;
@@ -54,6 +56,9 @@ public class PopularTVFragment extends Fragment {
     // GridLayoutManager
     private GridLayoutManager gridLayoutManager;
 
+    // AdMob
+    private AdView adView;
+
     @Override
     public void onCreate(Bundle savedInstaceState) {
         super.onCreate(savedInstaceState);
@@ -62,6 +67,12 @@ public class PopularTVFragment extends Fragment {
     @Override
     public View onCreateView(final LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.recyclerlist_fragment, container, false);
+
+        // Add Adview to the grid
+        adView = (AdView)view.findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        adView.loadAd(adRequest);
+        adView.bringToFront();
 
         progressActivity = (ProgressActivity) view.findViewById(R.id.progressActivity);
         progressActivity.showLoading();
