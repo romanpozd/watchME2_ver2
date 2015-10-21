@@ -14,14 +14,14 @@
             android:layout_height="200dp"
             android:id="@+id/niv_grid_poster"
             android:scaleType="fitXY"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentLeft="true"/>
+            android:layout_alignParentTop="true" />
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/niv_grid_poster"
             android:padding="5dp"
             android:textColor="@android:color/black"
+            android:gravity="left"
             android:id="@+id/tv_grid_movie_title"
             android:singleLine="true"/>
 
@@ -31,6 +31,7 @@
             android:id="@+id/tv_grid_movie_year"
             android:paddingLeft="5dp"
             android:paddingBottom="5dp"
+            android:gravity="left"
             android:layout_below="@+id/tv_grid_movie_title" />
 
     </RelativeLayout>
