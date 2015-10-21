@@ -4,6 +4,7 @@ package com.watchme.roman.watchme_ver2.Activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.NetworkImageView;
@@ -25,7 +26,7 @@ public class DetailsActivity extends BaseActivity {
 
     // Movie backdrop
     private NetworkImageView movieBackdrop;
-
+    public boolean isFilmography = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,9 +41,19 @@ public class DetailsActivity extends BaseActivity {
             is_tv = intent.getBooleanExtra(Constants.IS_TVSERIES_TAG, false);
         }
 
-        // Set movie backdrop
-        movieBackdrop = (NetworkImageView) findViewById(R.id.iv_collapsing_thumb);
-        movieBackdrop.setImageUrl(backdropUrl, imageLoader);
+        if (backdropUrl == null)
+            isFilmography = true;
+        else{
+            isFilmography = false;
+            // Set movie backdrop
+            movieBackdrop = (NetworkImageView) findViewById(R.id.iv_collapsing_thumb);
+            if (backdropUrl.equals("null")) {
+                movieBackdrop.setDefaultImageResId(R.drawable.custom_logo);
+                movieBackdrop.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
+            }
+            else
+                movieBackdrop.setImageUrl(backdropUrl, imageLoader);
+        }
 
 
         getSupportActionBar().setTitle(title);

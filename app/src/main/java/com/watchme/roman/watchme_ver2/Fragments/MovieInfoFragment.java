@@ -18,6 +18,7 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.android.volley.toolbox.ImageLoader;
+import com.android.volley.toolbox.NetworkImageView;
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
 import com.google.android.youtube.player.YouTubeInitializationResult;
@@ -27,6 +28,7 @@ import com.google.android.youtube.player.YouTubeThumbnailView;
 import com.vlonjatg.progressactivity.ProgressActivity;
 import com.watchme.roman.moviesgreendao.model.DaoSession;
 import com.watchme.roman.moviesgreendao.model.MovieDao;
+import com.watchme.roman.watchme_ver2.Activities.DetailsActivity;
 import com.watchme.roman.watchme_ver2.Model.Movie;
 import com.watchme.roman.watchme_ver2.Model.Trailer;
 import com.watchme.roman.watchme_ver2.R;
@@ -108,7 +110,7 @@ public class MovieInfoFragment extends Fragment {
 
         // Check if user device is tablet, if yes set the height of youtube thumb to bigger one
         if (getResources().getBoolean(R.bool.isTablet))
-            youTubeThumbnailView.getLayoutParams().height = 1000;
+            youTubeThumbnailView.getLayoutParams().height = 700;
 
         play = (Button) view.findViewById(R.id.btn_play);
         play.getBackground().setAlpha(200);
@@ -185,6 +187,11 @@ public class MovieInfoFragment extends Fragment {
                     tv_favorite.setText("Favorite");
                 }
 
+                // Check if there is thumb updated or not
+                if (((DetailsActivity)getActivity()).isFilmography){
+                    NetworkImageView thumb = (NetworkImageView)getActivity().findViewById(R.id.iv_collapsing_thumb);
+                    thumb.setImageUrl(Constants.BASE_IMG_URL + Constants.BIG_POSTER + myMovie.getBackdrop(), imageLoader);
+                }
                 tv_status.setText("Status: " + myMovie.getStatus());
                 movie_poster.setImageUrl(Constants.BASE_IMG_URL + Constants.SMALL_POSTER + myMovie.getPosterURL(), imageLoader);
                 movie_title.setText(myMovie.getTitle());
@@ -254,6 +261,7 @@ public class MovieInfoFragment extends Fragment {
         movie.setTitle(myMovie.getTitle());
         movie.setMovie_id(myMovie.getMovieId());
         movie.setPosterURL(myMovie.getPosterURL());
+        movie.setThumbURL(Constants.BASE_IMG_URL + Constants.BIG_POSTER + myMovie.getBackdrop());
         movie.setRelease(myMovie.getYear());
         movie.setTv(false);
         movieDao.insertOrReplace(movie);

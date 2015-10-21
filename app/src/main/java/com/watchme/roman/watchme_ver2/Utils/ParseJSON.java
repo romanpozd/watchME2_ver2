@@ -193,7 +193,10 @@ public class ParseJSON extends Volley {
                 switch (tempObj.getString(MEDIA_TYPE)) {
                     case Constants.PERSON_PATH:
                         SearchList person = new SearchList();
-                        person.setImage(Constants.BASE_IMG_URL + Constants.SMALL_POSTER + tempObj.getString(ACTOR_IMG));
+                        if (tempObj.getString(ACTOR_IMG).equals("null"))
+                            person.setImage("null");
+                        else
+                            person.setImage(Constants.BASE_IMG_URL + Constants.SMALL_POSTER + tempObj.getString(ACTOR_IMG));
                         person.setName(tempObj.getString(NAME_PATH));
                         person.setID(tempObj.getString(ID_PATH));
                         person.setIs_actor(true);
@@ -210,8 +213,14 @@ public class ParseJSON extends Volley {
                         break;
                     case Constants.MOVIE_PATH:
                         SearchList movie = new SearchList();
-                        movie.setBackdrop(Constants.BASE_IMG_URL + Constants.BIG_POSTER + tempObj.getString(BACK_DROP_PATH));
-                        movie.setImage(Constants.BASE_IMG_URL + Constants.SMALL_POSTER + tempObj.getString(IMAGE_PATH));
+                        if (tempObj.getString(BACK_DROP_PATH).equals("null"))
+                            movie.setBackdrop("null");
+                        else
+                            movie.setBackdrop(Constants.BASE_IMG_URL + Constants.BIG_POSTER + tempObj.getString(BACK_DROP_PATH));
+                        if (tempObj.getString(IMAGE_PATH).equals("null"))
+                            movie.setImage("null");
+                        else
+                            movie.setImage(Constants.BASE_IMG_URL + Constants.SMALL_POSTER + tempObj.getString(IMAGE_PATH));
                         movie.setName(tempObj.getString(TITLE_PATH));
                         String[] separate = tempObj.getString(RELEASE_PATH).split("-");
                         if (separate[0].equals("null"))
@@ -225,8 +234,14 @@ public class ParseJSON extends Volley {
                         break;
                     case Constants.TV_PATH:
                         SearchList tvSeries = new SearchList();
-                        tvSeries.setBackdrop(Constants.BASE_IMG_URL + Constants.BIG_POSTER + tempObj.getString(BACK_DROP_PATH));
-                        tvSeries.setImage(Constants.BASE_IMG_URL + Constants.SMALL_POSTER + tempObj.getString(IMAGE_PATH));
+                        if (tempObj.getString(BACK_DROP_PATH).equals("null"))
+                            tvSeries.setBackdrop("null");
+                        else
+                            tvSeries.setBackdrop(Constants.BASE_IMG_URL + Constants.BIG_POSTER + tempObj.getString(BACK_DROP_PATH));
+                        if (tempObj.getString(IMAGE_PATH).equals("null"))
+                            tvSeries.setImage("null");
+                        else
+                            tvSeries.setImage(Constants.BASE_IMG_URL + Constants.SMALL_POSTER + tempObj.getString(IMAGE_PATH));
                         tvSeries.setName(tempObj.getString(TV_TITLE));
                         separate = tempObj.getString(FIRST_AIR).split("-");
                         if (separate[0].equals("null"))
@@ -290,7 +305,10 @@ public class ParseJSON extends Volley {
                 tempObj = jsonArray.getJSONObject(i);
                 Episode episode = new Episode();
                 episode.setEpisode_name(tempObj.getString(NAME_PATH));
-                episode.setEpisode_thumb(tempObj.getString(EPISODE_IMG));
+                if (tempObj.getString(EPISODE_IMG).equals("null"))
+                    episode.setEpisode_thumb("null");
+                else
+                    episode.setEpisode_thumb(tempObj.getString(EPISODE_IMG));
                 episode.setEpisode_num(i + 1);
                 episode.setEpisode_overview(tempObj.getString(OVERVIEW_PATH));
                 episode.setRating(tempObj.getDouble(RATE_PATH));
@@ -360,7 +378,10 @@ public class ParseJSON extends Volley {
                 season.setNumof_episodes(tempObj.getInt(EPISODES_COUNT));
                 season.setSeason_id(tempObj.getString(ID_PATH));
                 season.setSeason_number(tempObj.getInt(SEASON_NUMBER));
-                season.setSeason_poster(tempObj.getString(IMAGE_PATH));
+                if (tempObj.getString(IMAGE_PATH).equals("null"))
+                    season.setSeason_poster("null");
+                else
+                    season.setSeason_poster(tempObj.getString(IMAGE_PATH));
                 seasonList.add(season);
             }
 
@@ -421,8 +442,14 @@ public class ParseJSON extends Volley {
             tvSeries.setCreatorID(tempObj.getString(ID_PATH));
 
             // Get posters
-            tvSeries.setBackdrop(jsonObject.getString(BACK_DROP_PATH));
-            tvSeries.setPosterURL(jsonObject.getString(IMAGE_PATH));
+            if (jsonObject.getString(BACK_DROP_PATH).equals("null"))
+                tvSeries.setBackdrop("null");
+            else
+                tvSeries.setBackdrop(jsonObject.getString(BACK_DROP_PATH));
+            if (jsonObject.getString(IMAGE_PATH).equals("null"))
+                tvSeries.setPosterURL("null");
+            else
+                tvSeries.setPosterURL(jsonObject.getString(IMAGE_PATH));
             // Get TV series title
             tvSeries.setTitle(jsonObject.getString(TV_TITLE));
             // Create jsonArray to get all episodes runtime
@@ -510,7 +537,10 @@ public class ParseJSON extends Volley {
             for (int i = 0; i < jsonArray.length(); ++i) {
                 JSONObject singleMovie = jsonArray.getJSONObject(i);
                 Movie movie = new Movie();
-                movie.setPosterURL(singleMovie.getString(IMAGE_PATH));
+                if (singleMovie.getString(IMAGE_PATH).equals("null"))
+                    movie.setPosterURL("null");
+                else
+                    movie.setPosterURL(singleMovie.getString(IMAGE_PATH));
                 movie.setTitle(singleMovie.getString(TITLE_PATH));
                 String[] separate = singleMovie.getString(RELEASE_PATH).split("-");
                 if (separate[0].equals("null"))
@@ -568,7 +598,10 @@ public class ParseJSON extends Volley {
             actor.setBirthPlace(jsonObject.getString(BIRTH_PLACE));
             actor.setActorID(jsonObject.getString(ID_PATH));
             actor.setActorName(jsonObject.getString(NAME_PATH));
-            actor.setActorIMG(jsonObject.getString(ACTOR_IMG));
+            if (jsonObject.getString(ACTOR_IMG).equals("null"))
+                actor.setActorIMG("null");
+            else
+                actor.setActorIMG(jsonObject.getString(ACTOR_IMG));
 
             volleyCallBackActorDetails.onSuccess(actor);
         } catch (JSONException e) {
@@ -685,9 +718,9 @@ public class ParseJSON extends Volley {
                     actor.setMovieCharacter(singleActor.getString(CHARACTER_PATH));
                 actor.setActorID(singleActor.getString(ID_PATH));
                 if (singleActor.getString(ACTOR_IMG).equals("null"))
-                    //TODO if actor image is null insert custom placeholder, for now just skip
-                    continue;
-                actor.setActorIMG(singleActor.getString(ACTOR_IMG));
+                    actor.setActorIMG("null");
+                else
+                    actor.setActorIMG(singleActor.getString(ACTOR_IMG));
 
                 // Add object to actorsList
                 actorsList.add(actor);
@@ -757,7 +790,10 @@ public class ParseJSON extends Volley {
                 movie.setYear(Integer.parseInt(separate[0]));
             movie.setVoteCount(jsonObject.getInt(VOTE_COUNT));
             movie.setOverview(jsonObject.getString(OVERVIEW_PATH));
-            movie.setBackdrop(jsonObject.getString(BACK_DROP_PATH));
+            if (jsonObject.getString(BACK_DROP_PATH).equals("null"))
+                movie.setBackdrop("null");
+            else
+                movie.setBackdrop(jsonObject.getString(BACK_DROP_PATH));
             movie.setMovieId(jsonObject.getString(ID_PATH));
             movie.setPosterURL(jsonObject.getString(IMAGE_PATH));
             movie.setRating(jsonObject.getDouble(RATE_PATH));
@@ -898,8 +934,12 @@ public class ParseJSON extends Volley {
             // Skip movies without a poster
             if (singleMovie.getString(IMAGE_PATH).equals("null"))
                 continue;
-            movie.setPosterURL(Constants.BASE_IMG_URL + Constants.SMALL_POSTER + singleMovie.getString(IMAGE_PATH));
-            movie.setBackdrop(Constants.BASE_IMG_URL + Constants.BIG_POSTER + singleMovie.getString(BACK_DROP_PATH));
+            else
+                movie.setPosterURL(Constants.BASE_IMG_URL + Constants.SMALL_POSTER + singleMovie.getString(IMAGE_PATH));
+            if (singleMovie.getString(BACK_DROP_PATH).equals("null"))
+                movie.setBackdrop("null");
+            else
+                movie.setBackdrop(Constants.BASE_IMG_URL + Constants.BIG_POSTER + singleMovie.getString(BACK_DROP_PATH));
             String[] separate;
             if (uri.getPathSegments().get(1).equals(Constants.MOVIE_PATH)) {
                 separate = singleMovie.getString(RELEASE_PATH).split("-");

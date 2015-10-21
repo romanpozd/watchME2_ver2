@@ -93,6 +93,7 @@ public class FavoriteTVSeriesFragment extends Fragment {
                             intent.putExtra(Constants.ID_TAG, tvSeriesList.get(position).getMovie_id());
                             intent.putExtra(Constants.TITLE_TAG, tvSeriesList.get(position).getTitle());
                             intent.putExtra(Constants.IS_TVSERIES_TAG, true);
+                            intent.putExtra(Constants.BACKDROP_TAG, tvSeriesList.get(position).getThumbURL());
                             startActivityForResult(intent, 2);
                         }
                     });

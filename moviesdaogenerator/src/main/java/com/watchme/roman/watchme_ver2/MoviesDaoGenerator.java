@@ -15,6 +15,7 @@ public class MoviesDaoGenerator {
         movie.addStringProperty("movie_id");
         movie.addStringProperty("title");
         movie.addStringProperty("posterURL");
+        movie.addStringProperty("thumbURL");
         movie.addIntProperty("release");
         movie.addBooleanProperty("tv");
 

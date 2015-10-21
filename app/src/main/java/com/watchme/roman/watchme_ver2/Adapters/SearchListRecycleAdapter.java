@@ -5,8 +5,10 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.android.volley.VolleyError;
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.NetworkImageView;
 import com.watchme.roman.watchme_ver2.Model.SearchList;
@@ -45,10 +47,12 @@ public class SearchListRecycleAdapter extends RecyclerView.Adapter<SearchListRec
     }
 
     @Override
-    public void onBindViewHolder(CustomViewHolder customViewHolder, int position) {
+    public void onBindViewHolder(final CustomViewHolder customViewHolder, int position) {
         SearchList search = searchList.get(position);
-        customViewHolder.rowImage.setImageUrl(Constants.BASE_IMG_URL + Constants.SMALL_POSTER + search.getImage(), imageLoader);
+
+        customViewHolder.rowImage.setImageUrl(search.getImage(), imageLoader);
         customViewHolder.rowTitle.setText(search.getName());
+
         if (search.is_actor()) {
             customViewHolder.rowTag.setText(R.string.actor_tag);
             NumberFormat formatter = new DecimalFormat("#0.0");
@@ -65,6 +69,7 @@ public class SearchListRecycleAdapter extends RecyclerView.Adapter<SearchListRec
                 customViewHolder.rowRelease.setText("Known for: \n- " + joinedKnownFor);
             }
         } else if (search.is_movie() || search.is_tv()) {
+
             if (search.is_movie())
                 customViewHolder.rowTag.setText(R.string.movie_tag);
             else
@@ -81,6 +86,7 @@ public class SearchListRecycleAdapter extends RecyclerView.Adapter<SearchListRec
         customViewHolder.rowTag.getBackground().setAlpha(100);
 
     }
+
 
     @Override
     public int getItemCount() {

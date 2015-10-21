@@ -45,8 +45,7 @@ public class ActorsRecyclerAdapter extends RecyclerView.Adapter<ActorsRecyclerAd
     @Override
     public void onBindViewHolder(CustomViewHolder customViewHolder, int position) {
         Actors actor = actorsList.get(position);
-        if (actor.getActorIMG() != "null")
-            customViewHolder.actorIMG.setImageUrl(Constants.BASE_IMG_URL + Constants.SMALLEST_POSTER + actor.getActorIMG(), imageLoader);
+        customViewHolder.actorIMG.setImageUrl(Constants.BASE_IMG_URL + Constants.SMALLEST_POSTER + actor.getActorIMG(), imageLoader);
         customViewHolder.actorName.setText(actor.getActorName());
         if (actor.getMovieCharacter() != "null")
             customViewHolder.actorCharacter.setText("Character: " + actor.getMovieCharacter());

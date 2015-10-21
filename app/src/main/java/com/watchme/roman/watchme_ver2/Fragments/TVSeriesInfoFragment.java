@@ -241,6 +241,7 @@ public class TVSeriesInfoFragment extends Fragment {
 
         tvSeries.setTitle(tvSeriesObj.getTitle());
         tvSeries.setPosterURL(tvSeriesObj.getPosterURL());
+        tvSeries.setThumbURL(Constants.BASE_IMG_URL + Constants.BIG_POSTER + tvSeriesObj.getBackdrop());
         tvSeries.setRelease(tvSeriesObj.getYear());
         tvSeries.setMovie_id(movie_series_id);
         tvSeries.setTv(true);

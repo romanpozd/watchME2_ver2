@@ -10,6 +10,7 @@ public class Movie {
     private String movie_id;
     private String title;
     private String posterURL;
+    private String thumbURL;
     private Integer release;
     private Boolean tv;
 
@@ -20,11 +21,12 @@ public class Movie {
         this.id = id;
     }
 
-    public Movie(Long id, String movie_id, String title, String posterURL, Integer release, Boolean tv) {
+    public Movie(Long id, String movie_id, String title, String posterURL, String thumbURL, Integer release, Boolean tv) {
         this.id = id;
         this.movie_id = movie_id;
         this.title = title;
         this.posterURL = posterURL;
+        this.thumbURL = thumbURL;
         this.release = release;
         this.tv = tv;
     }
@@ -59,6 +61,14 @@ public class Movie {
 
     public void setPosterURL(String posterURL) {
         this.posterURL = posterURL;
+    }
+
+    public String getThumbURL() {
+        return thumbURL;
+    }
+
+    public void setThumbURL(String thumbURL) {
+        this.thumbURL = thumbURL;
     }
 
     public Integer getRelease() {

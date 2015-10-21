@@ -87,6 +87,7 @@ public class FavoriteMoviesFragment extends Fragment {
                     Intent intent = new Intent(getActivity(), DetailsActivity.class);
                     intent.putExtra(Constants.ID_TAG, moviesList.get(position).getMovie_id());
                     intent.putExtra(Constants.TITLE_TAG, moviesList.get(position).getTitle());
+                    intent.putExtra(Constants.BACKDROP_TAG, moviesList.get(position).getThumbURL());
                     startActivityForResult(intent, 1);
                 }
             });

@@ -27,8 +27,9 @@ public class MovieDao extends AbstractDao<Movie, Long> {
         public final static Property Movie_id = new Property(1, String.class, "movie_id", false, "MOVIE_ID");
         public final static Property Title = new Property(2, String.class, "title", false, "TITLE");
         public final static Property PosterURL = new Property(3, String.class, "posterURL", false, "POSTER_URL");
-        public final static Property Release = new Property(4, Integer.class, "release", false, "RELEASE");
-        public final static Property Tv = new Property(5, Boolean.class, "tv", false, "TV");
+        public final static Property ThumbURL = new Property(4, String.class, "thumbURL", false, "THUMB_URL");
+        public final static Property Release = new Property(5, Integer.class, "release", false, "RELEASE");
+        public final static Property Tv = new Property(6, Boolean.class, "tv", false, "TV");
     };
 
 
@@ -48,8 +49,9 @@ public class MovieDao extends AbstractDao<Movie, Long> {
                 "\"MOVIE_ID\" TEXT," + // 1: movie_id
                 "\"TITLE\" TEXT," + // 2: title
                 "\"POSTER_URL\" TEXT," + // 3: posterURL
-                "\"RELEASE\" INTEGER," + // 4: release
-                "\"TV\" INTEGER);"); // 5: tv
+                "\"THUMB_URL\" TEXT," + // 4: thumbURL
+                "\"RELEASE\" INTEGER," + // 5: release
+                "\"TV\" INTEGER);"); // 6: tv
     }
 
     /** Drops the underlying database table. */
@@ -83,14 +85,19 @@ public class MovieDao extends AbstractDao<Movie, Long> {
             stmt.bindString(4, posterURL);
         }
  
+        String thumbURL = entity.getThumbURL();
+        if (thumbURL != null) {
+            stmt.bindString(5, thumbURL);
+        }
+ 
         Integer release = entity.getRelease();
         if (release != null) {
-            stmt.bindLong(5, release);
+            stmt.bindLong(6, release);
         }
  
         Boolean tv = entity.getTv();
         if (tv != null) {
-            stmt.bindLong(6, tv ? 1L: 0L);
+            stmt.bindLong(7, tv ? 1L: 0L);
         }
     }
 
@@ -108,8 +115,9 @@ public class MovieDao extends AbstractDao<Movie, Long> {
             cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1), // movie_id
             cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2), // title
             cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3), // posterURL
-            cursor.isNull(offset + 4) ? null : cursor.getInt(offset + 4), // release
-            cursor.isNull(offset + 5) ? null : cursor.getShort(offset + 5) != 0 // tv
+            cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4), // thumbURL
+            cursor.isNull(offset + 5) ? null : cursor.getInt(offset + 5), // release
+            cursor.isNull(offset + 6) ? null : cursor.getShort(offset + 6) != 0 // tv
         );
         return entity;
     }
@@ -121,8 +129,9 @@ public class MovieDao extends AbstractDao<Movie, Long> {
         entity.setMovie_id(cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1));
         entity.setTitle(cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2));
         entity.setPosterURL(cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3));
-        entity.setRelease(cursor.isNull(offset + 4) ? null : cursor.getInt(offset + 4));
-        entity.setTv(cursor.isNull(offset + 5) ? null : cursor.getShort(offset + 5) != 0);
+        entity.setThumbURL(cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4));
+        entity.setRelease(cursor.isNull(offset + 5) ? null : cursor.getInt(offset + 5));
+        entity.setTv(cursor.isNull(offset + 6) ? null : cursor.getShort(offset + 6) != 0);
      }
     
     /** @inheritdoc */

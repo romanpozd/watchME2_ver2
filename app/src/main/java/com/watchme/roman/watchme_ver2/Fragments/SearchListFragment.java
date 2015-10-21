@@ -33,8 +33,10 @@ public class SearchListFragment extends Fragment {
     private RecyclerView recyclerView;
     private SearchListRecycleAdapter searchListRecycleAdapter;
 
+
     // Search query
     private String searchQuery;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -52,9 +54,7 @@ public class SearchListFragment extends Fragment {
 
         try {
             GetSearchQuery(searchQuery);
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        } catch (JSONException e) {
+        } catch (UnsupportedEncodingException | JSONException e) {
             e.printStackTrace();
         }
         return view;
