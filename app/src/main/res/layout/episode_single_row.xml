@@ -49,7 +49,8 @@
             android:layout_below="@id/tv_episode_rating"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
-            android:layout_marginLeft="10dp"/>
+            android:layout_marginLeft="10dp"
+            android:gravity="left"/>
 
     </RelativeLayout>
 

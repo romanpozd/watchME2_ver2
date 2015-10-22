@@ -22,7 +22,7 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         ads:adSize="SMART_BANNER"
-        ads:adUnitId="ca-app-pub-5093183790538090/3761105761" />
+        ads:adUnitId="your-admob-id" />
 
 </com.vlonjatg.progressactivity.ProgressActivity>
 
