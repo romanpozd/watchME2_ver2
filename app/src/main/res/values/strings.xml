@@ -16,7 +16,7 @@
     <string name="most_rated_moves">Most rated</string>
     <string name="title_activity_details">DetailsActivity</string>
 
-    <string name="youtube_api_key">AIzaSyAjUzNvb6M2ym4m80_fIoBmJBfyoShDTug</string>
+    <string name="youtube_api_key">your-youtube-api</string>
     <string name="overview_title">Overview</string>
     <string name="trailer_title">Trailer</string>
     <string name="title_activity_actor_details">ActorDetailsActivity</string>
