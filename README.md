@@ -2,6 +2,8 @@ watchME android app
 
 Screenshots:
 
+Downloa from Google Play: http://play.google.com/store/apps/details?id=com.watchme.roman.watchme2_ver2
+
 
 ![screenshot_2015-10-22-01-46-45](https://cloud.githubusercontent.com/assets/12273895/10653473/9237b9b4-7868-11e5-9337-53312e289bc5.png)
 
